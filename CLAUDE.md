@@ -6,7 +6,7 @@ Context for Claude sessions working in this repo. Read this first.
 
 - **Daddy Long Legs** is a daddy-daughter acoustic duo: the dad (repo owner, dpenn1000) and his daughter **Rylie Pennington**. Websites: daddylonglegsband.com and ryliepennington.com.
 - **Rylie** (13) sings and plays **guitar and bass guitar**, stars as the lead in the feature film *Not My Dog* (streaming since Sept 11, 2026; see `docs/RESEARCH.md`), has musical theatre credits, and sings the National Anthem at sporting events. The band writes originals and plays live gigs.
-- **Consequence for the rig:** on songs where Rylie plays bass, the backing track should be drums only. Set `"bass": False` on that song in `make_tracks.py`. Ask the user which songs those are.
+- **Consequence for the rig:** on songs where Rylie plays bass, the backing track should be drums only. Set `"bass": False` on that song in `make_tracks.py`. **As of Sept 26, 2026 nobody plays bass live, so every song gets a bass track.**
 - The dad already uses **Digital Performer (DP)** for writing and recording and is new to Ableton.
 - **Goal:** live drum and bass backing tracks that sound natural and follow the band. Sections loop until the band moves on, so a verse can be stretched and a bridge skipped on stage. Lighting follows the same section changes.
 - **Next gig:** Arizona State Fair. The fair runs **Oct 1 to Nov 1, 2026, Thursday to Sunday**. The band plays the fair's first weekend, so `docs/GIG-PLAN.md`'s tight plan applies (3 to 5 songs with tracks, myDMX for lights, ONYX later).
@@ -71,7 +71,6 @@ The laptop has a Chrome connection; the cloud session that built this repo did n
 - Which foot controller they own, if any.
 - Audio interface model on the Windows laptop, and whether they want the click in their ears only (needs 4 outputs).
 - Whether they've bought EZdrummer 3, EZbass or AbleSet.
-- Which songs Rylie plays bass on (drums-only backing for those), and who plays what on the rest.
 - Monitoring: in-ear vs wedge, and whether a click is wanted at all. Check with the user before designing monitor mixes.
 
 ## Related
