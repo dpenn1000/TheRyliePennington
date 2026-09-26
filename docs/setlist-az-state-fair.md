@@ -14,7 +14,7 @@ Pulled from BandHelper on September 26, 2026. "Chart shapes" is what the guitar 
 | 6 | Choosin' Texas | Cover, Ella Langley | Db | C | 1 | 110 | 4/4 | 3:50 |
 | 7 | Kiss Me | Cover, Sixpence None The Richer | Eb | D | 1 | 100 | 4/4 | 3:24 |
 | 8 | These Old Wheels | Cover, Mandolin Orange | ? | G | ? | ? | ? | 2:36 |
-| 9 | Melissa | Cover, Allman Brothers | E | E | ? | ? | ? | 3:54 |
+| 9 | Melissa | Cover, Allman Brothers | E | E | none | 83 (record) | 4/4 | 3:54 |
 | 10 | Paper Stars | Original | Db | C | 1 | 88 | 4/4 | 5:00 |
 | 11 | Starting Over | Cover, Chris Stapleton | G | G | ? | ? | ? | 4:00 |
 | 12 | Need You Now | Cover, Lady Antebellum | ? | F / Am / C | ? | ? | ? | 3:56 |
@@ -33,7 +33,7 @@ Pulled from BandHelper on September 26, 2026. "Chart shapes" is what the guitar 
 | Choosin' Texas | `Choosin Texas.txt` + BandHelper | Complete |
 | Kiss Me | `Kiss Me.txt` + BandHelper | Complete |
 | These Old Wheels | BandHelper lyrics (the .docx is empty) | Complete: every verse uses verse 1's changes, G C G D/F# Em D/F# C G D/F# G |
-| Melissa | `Melissa.docx` | Chorus only; verses show a bare E |
+| Melissa | Ultimate Guitar official chart (tabs.ultimate-guitar.com, melissa-official-2601657) | Complete, see Song notes |
 | Paper Stars | `Paper Stars.txt` + BandHelper | Complete |
 | Starting Over | `Starting Over.docx` | Verse and chorus |
 | Need You Now | `Need you Now.docx` | Verse, chorus, bridge |
@@ -60,6 +60,23 @@ One chord per bar. Bar counts from the lyric timings:
 | Bridge | 8 | Am G Am D Am C C D (not in the video, estimate) |
 
 The pre-chorus and chorus tail are estimates within about half a bar.
+
+### Melissa
+
+From the Ultimate Guitar official chart: key E, no capo, 83 BPM (the record's tempo). One UG commenter notes Gregg Allman plays it simpler on guitar; the bass track only needs the roots either way.
+
+Bar counts are an estimate at one chord per bar. Check against how you play it.
+
+| Section | Bars | Chords |
+|---|---|---|
+| Intro | 8 | E F#m11 Emaj7/G# F#m11, twice |
+| Verse | 8 | E F#m11 Emaj7/G# F#m11, E E F#m11 F#m11 |
+| Chorus | 12 | Asus2 Bsus4 C#m7 Asus2/D, E F#m11 Emaj7/G# F#m11, Cmaj7 Cmaj7 B B |
+| Interlude | 4 | E F#m11 Emaj7/G# F#m11 |
+| Bridge | 12 | E E Dsus2 Dsus2 Asus2 Asus2 Bsus4 Bsus4 C#m7 C#m7 Asus2 B |
+| Outro | 8 | Cmaj7 Cmaj7 B E, then F#m11 Emaj7/G# F#m11 E |
+
+Song order: intro, verse, chorus, interlude, verse, chorus, interlude, bridge, verse, chorus, outro.
 
 ## Things to settle
 
