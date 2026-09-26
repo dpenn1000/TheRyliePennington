@@ -50,3 +50,13 @@ Gathered September 2026. Items marked **(unverified)** couldn't be checked from 
 - https://musictech.com/guides/buyers-guide/addictive-drums-2-vs-ezdrummer-3-vs-superior-drummer-3-which-drum-plugin-is-best/
 - https://dawplugins.net/vst-plugins/instruments/bass/ezbass/
 - https://azstatefair.com/events/arizona-state-fair/
+
+## Not My Dog (Rylie's feature film)
+
+- Rylie stars as **Bridget**, the lead, in her film debut. Family film, 1 h 21 min, written and directed by **Danny LeGare**, produced by **Trash Panda Pictures** (Connecticut).
+- Streaming since **September 11, 2026** on Prime Video, Apple TV and YouTube Movies.
+- Plot: a stubborn, phone-glued 12-year-old is sent on an errand to her dad's barbershop, and a stray black German Shepherd named Nudge won't leave her side. Inspired partly by "black dog syndrome" (black dogs passed over for adoption). Nudge is played by Inkosi, in his first film role.
+- Cast includes Eric Roberts, Dan Lauria, Marika Dominczyk, Jeremy London, Robert Ri'chard, Sal Rendino, Ashley Ottesen and Analise Scarpaci.
+- Film Threat: 7.5/10. Pennington "does not disappoint as Bridget ... practically perfect," "endearing, easy to watch, clever, curious, confident and respectful." FilmCarnage calls her "convincing as a tween pushed into an uncomfortable world."
+- Show angle: "the star of *Not My Dog*" is a hook for the State Fair intro, merch table and posters. A rescue-dog tie-in (a local shelter at the gig) fits the film's message.
+- Sources: https://filmthreat.com/reviews/not-my-dog/ · https://filmcarnage.com/2026/09/18/review-not-my-dog/ · https://www.imdb.com/title/tt34769247/ · https://www.trashpanda.pictures/features/not-my-dog · https://www.amazon.com/Not-My-Dog-Danny-LeGare/dp/B0H8GCQ4M5 · https://tv.apple.com/us/movie/not-my-dog/umc.cmc.4q78w216o6o06zg0sq3mml4jt
