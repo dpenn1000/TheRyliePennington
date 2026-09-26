@@ -1,0 +1,37 @@
+# Arizona State Fair: gig plan
+
+The fair runs **Oct 1 to Nov 1, 2026** (Thursday to Sunday). Fill in the slot:
+
+- **Date and time:** _TBD_
+- **Stage:** _TBD_
+- **Set length:** _TBD_
+- **Load-in and soundcheck:** _TBD_
+
+## If the gig is in the first week (tight)
+
+Aim for something simple and solid, not complete.
+
+1. **Backing tracks for 3 to 5 songs only.** Leave the rest acoustic, like you've always done. Nobody at a fair knows which songs "should" have drums.
+2. **No AbleSet, no BandHelper link.** One Ableton set, songs stacked top to bottom, scenes launched from the laptop or with computer keys (Ctrl+K key mapping).
+3. **Lights on myDMX, sound-active.** It's the setup you already know. ONYX comes later.
+4. **Freeze all tracks** the night before.
+5. **Rehearse the whole set twice** with the rig, start to finish, including the moments between songs.
+
+## If the gig is two or more weeks out
+
+1. Week 1: full setlist in Ableton, foot pedal mapped, rehearse.
+2. Week 2: ONYX looks built, Lights track wired through loopMIDI, AbleSet on the tablets.
+3. Final days: full dress rehearsal with lights. Freeze tracks. Save a backup copy of the set to a USB stick.
+
+## Gig-day checklist
+
+- [ ] Laptop charged **and** power supply packed
+- [ ] Wi-Fi, notifications and Windows Update turned off
+- [ ] Audio interface, cables, and a spare USB cable
+- [ ] Foot controller and its cable
+- [ ] NX DMX dongle **and** the myDMX backup
+- [ ] DMX cables and terminator
+- [ ] Travel router (if using AbleSet)
+- [ ] Tablets charged, BandHelper synced offline
+- [ ] Backup of the Live set on a USB stick
+- [ ] Backing tracks set about 12 dB under the vocals at soundcheck
