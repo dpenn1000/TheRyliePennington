@@ -7,6 +7,7 @@ ready to drag into Session View clip slots.
 
 To add a song, copy an entry in SONGS and change tempo, feel and chords.
 Chords are one per bar: "G", "Em", "C/E" (slash = bass note), "D7", etc.
+Set "bass": False on a song when Rylie plays bass live; only drums and lights are written.
 """
 import os
 import random
@@ -41,6 +42,7 @@ SONGS = [
         "name": "02-campfire-shuffle",
         "tempo": 84,
         "feel": "shuffle",       # swung 8ths, laid back
+        "bass": True,            # False when Rylie plays bass on this one
         "sections": {
             "1-intro":  {"chords": ["D", "D", "G", "D"], "style": "light"},
             "2-verse":  {"chords": ["D", "D", "G", "D", "A", "G", "D", "A"], "style": "verse"},
@@ -310,7 +312,8 @@ def main():
             d = drums(sec, song["feel"], seed)
             b = bass(sec, song["feel"], seed)
             write_mid(os.path.join(out, f"{sec_name}-drums.mid"), d, f"{sec_name} drums", song["tempo"], bars)
-            write_mid(os.path.join(out, f"{sec_name}-bass.mid"), b, f"{sec_name} bass", song["tempo"], bars)
+            if song.get("bass", True):
+                write_mid(os.path.join(out, f"{sec_name}-bass.mid"), b, f"{sec_name} bass", song["tempo"], bars)
             write_mid(os.path.join(out, f"{sec_name}-lights.mid"), lights(sec_name), f"{sec_name} lights",
                       song["tempo"], bars)
             full_d += [(t + offset, *rest) for t, *rest in d]
@@ -323,7 +326,8 @@ def main():
                   "fill lights", song["tempo"], 1)
         total = offset // BAR
         write_mid(os.path.join(out, "0-full-song-drums.mid"), full_d, "full drums", song["tempo"], total)
-        write_mid(os.path.join(out, "0-full-song-bass.mid"), full_b, "full bass", song["tempo"], total)
+        if song.get("bass", True):
+            write_mid(os.path.join(out, "0-full-song-bass.mid"), full_b, "full bass", song["tempo"], total)
         print(f"{song['name']}: {song['tempo']} BPM, {song['feel']} -> {out}")
 
 

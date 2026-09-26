@@ -4,7 +4,9 @@ Context for Claude sessions working in this repo. Read this first.
 
 ## Who and what
 
-- **Daddy Long Legs** is a daddy-daughter duo (the dad is the repo owner, dpenn1000; the repo is named for Rylie Pennington, so confirm names with the user before using them). Website: daddylonglegsband.com.
+- **Daddy Long Legs** is a daddy-daughter acoustic duo: the dad (repo owner, dpenn1000) and his daughter **Rylie Pennington**. Websites: daddylonglegsband.com and ryliepennington.com.
+- **Rylie** sings and plays **guitar and bass guitar**, has musical theatre and film credits, and sings the National Anthem at sporting events. The band writes originals and plays live gigs.
+- **Consequence for the rig:** on songs where Rylie plays bass, the backing track should be drums only. Set `"bass": False` on that song in `make_tracks.py`. Ask the user which songs those are.
 - The dad already uses **Digital Performer (DP)** for writing and recording and is new to Ableton.
 - **Goal:** live drum and bass backing tracks that sound natural and follow the band. Sections loop until the band moves on, so a verse can be stretched and a bridge skipped on stage. Lighting follows the same section changes.
 - **Next gig:** Arizona State Fair. The fair runs **Oct 1 to Nov 1, 2026, Thursday to Sunday**. The band's exact date and time slot are not yet recorded here. **Ask the user and write it below.**
@@ -58,7 +60,7 @@ The laptop has a Chrome connection; the cloud session that built this repo did n
 2. **Get the chord progression per section for each song.** Check BandHelper documents and lyrics first, then ask the user. Add each song to `SONGS` in `make_tracks.py` and regenerate the clips. Pick `feel` (straight/shuffle) and section `style` (light/verse/chorus/ending) per song. Ask the user when unsure.
 3. **Verify the LB-Hex DMX modes.** The plan assumes 6- or 11-channel modes; confirm from the Blizzard manual (blizzardpro.com product page or the manual PDF), including whether the user's units are the battery "Unplugged" model. Record the 11-channel layout in `ableton/LIGHTING.md`.
 4. **Verify the ONYX MIDI trigger steps** in the ONYX manual (support.obsidiancontrol.com: "Midi Macros", "Cuelist Options", "Function Assignments"). Search results indicate a MIDI "Note On" macro with Channel / Data 1 (note) / Data 2 (velocity) that runs Go on a cuelist. Replace the general wording in `ableton/LIGHTING.md` with exact menu paths.
-5. **Look at daddylonglegsband.com** for the band's style, instrumentation and any song list; note it in `docs/RESEARCH.md`.
+5. **Look at daddylonglegsband.com and ryliepennington.com** for the band's style, originals vs covers, and any song list; note it in `docs/RESEARCH.md`. Don't copy personal or health details about Rylie into this repo; it's public.
 6. Check the exact **AbleSet** edition and price (ableset.com) and whether the user has bought it.
 
 ## Open questions for the user
@@ -67,6 +69,8 @@ The laptop has a Chrome connection; the cloud session that built this repo did n
 - Which foot controller they own, if any.
 - Audio interface model on the Windows laptop, and whether they want the click in their ears only (needs 4 outputs).
 - Whether they've bought EZdrummer 3, EZbass or AbleSet.
+- Which songs Rylie plays bass on (drums-only backing for those), and who plays what on the rest.
+- Monitoring: in-ear vs wedge, and whether a click is wanted at all. Check with the user before designing monitor mixes.
 
 ## Related
 
