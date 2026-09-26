@@ -32,7 +32,7 @@ Pulled from BandHelper on September 26, 2026. "Chart shapes" is what the guitar 
 | Trains I Missed | `Trains I Missed.docx`, plus a capo-4 version | Verse and chorus |
 | Choosin' Texas | `Choosin Texas.txt` + BandHelper | Complete |
 | Kiss Me | `Kiss Me.txt` + BandHelper | Complete |
-| These Old Wheels | BandHelper lyrics (the .docx is empty) | First verse only |
+| These Old Wheels | BandHelper lyrics (the .docx is empty) | Complete: every verse uses verse 1's changes, G C G D/F# Em D/F# C G D/F# G |
 | Melissa | `Melissa.docx` | Chorus only; verses show a bare E |
 | Paper Stars | `Paper Stars.txt` + BandHelper | Complete |
 | Starting Over | `Starting Over.docx` | Verse and chorus |
