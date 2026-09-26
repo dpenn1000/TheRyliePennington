@@ -46,7 +46,7 @@ The charts live in the band's Lyrics and Chords folder on OneDrive, not in this 
 
 ### Halfway Gone, Halfway Brave
 
-Measured from a September 2026 street-performance video (Old Town Scottsdale): about 105 BPM average, verses near 100, choruses pushing toward 110. Track tempo set at **104** so the track sits a hair under her natural pace. Check 100, 104 and 108 at rehearsal.
+Measured from a September 2026 performance video: about 105 BPM average, verses near 100, choruses pushing toward 110. Track tempo set at **104** so the track sits a hair under her natural pace. Check 100, 104 and 108 at rehearsal.
 
 The video sounds in **A** (G shapes, capo 2). The chart and BandHelper say capo 1, Ab. Confirm with Rylie before building the bass.
 
