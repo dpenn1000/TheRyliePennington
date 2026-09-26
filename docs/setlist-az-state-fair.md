@@ -19,7 +19,7 @@ Pulled from BandHelper on September 26, 2026. "Chart shapes" is what the guitar 
 | 11 | Starting Over | Cover, Chris Stapleton | G | G | ? | ? | ? | 4:00 |
 | 12 | Need You Now | Cover, Lady Antebellum | ? | F / Am / C | ? | ? | ? | 3:56 |
 | 13 | Valerie | Cover, The Zutons | Eb | Eb | ? | ? | ? | 3:39 |
-| 14 | Radio GaGa | Cover, Queen | E | E | ? | ? | ? | 4:23 |
+| 14 | Radio GaGa | Cover, Queen | E | E | none | ? (record is about 112) | 4/4 | 4:23 |
 
 ## Chord charts
 
@@ -38,7 +38,7 @@ Pulled from BandHelper on September 26, 2026. "Chart shapes" is what the guitar 
 | Starting Over | `Starting Over.docx` | Verse and chorus |
 | Need You Now | `Need you Now.docx` | Verse, chorus, bridge |
 | Valerie | `Valerie.docx` | Verse and chorus |
-| Radio GaGa | `Radio Gaga.docx` | Verse and chorus |
+| Radio GaGa | `Radio Gaga.pdf` (the band's own chart) | Complete, see Song notes |
 
 The charts live in the band's Lyrics and Chords folder on OneDrive, not in this repo.
 
@@ -77,6 +77,21 @@ Bar counts are an estimate at one chord per bar. Check against how you play it.
 | Outro | 8 | Cmaj7 Cmaj7 B E, then F#m11 Emaj7/G# F#m11 E |
 
 Song order: intro, verse, chorus, interlude, verse, chorus, interlude, bridge, verse, chorus, outro.
+
+### Radio GaGa
+
+From the band's own chart, in E (the record is in F). Tempo not set yet; the record sits around 112.
+
+The chorus changes chord every half bar (A to E on "radio ga ga"), so `make_tracks.py` needs a two-chords-in-one-bar option before this song goes in. Bar counts are an estimate.
+
+| Section | Bars | Chords |
+|---|---|---|
+| Intro | 6 | E F#m A F#m A E |
+| Verse | 16 | E E F#m F#m A A F#m A-E, twice |
+| Pre-chorus | 14 | E E C#dim/G C#dim/G, A A Bbdim Bbdim, E/B E/B B B, A E |
+| Chorus | 8 | Esus4, A-E, A-E, A-E, Esus4, A-E, F#m A, B C#m B E |
+
+"A-E" is two chords in one bar. Song order: intro, verse, verse, pre-chorus, chorus, verse, pre-chorus (last 2 lines only), chorus x3 lines, outro on the last line.
 
 ## Things to settle
 
