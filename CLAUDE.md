@@ -28,6 +28,20 @@ Context for Claude sessions working in this repo. Read this first.
 | Bass | **Ample Bass P Lite** (free) now; **Toontrack EZbass** recommended upgrade | Suite's basses are mostly synth. |
 | Lighting sync method | **MIDI notes per section**, not timecode | Timecode breaks when sections repeat or get skipped. |
 
+## Two audio setups (decided Sept 26, 2026)
+
+One Live set serves both. Switch the audio device in Preferences > Audio; the track routing below is what changes.
+
+| | Quick rig | Full rig |
+|---|---|---|
+| Use | Busking, quick setups | Full shows |
+| Interface | **MOTU M2** (2 outputs) | **Midas M32C + DL32 stage box** |
+| Monitoring | No in-ears, no click | Multiple wireless in-ear mixes |
+| Click | **None** | **Yes, in-ears only, never front of house** |
+| Routing | Drums and bass summed to outputs 1/2 into the PA | Drums, bass and click on separate channels into the M32C so each in-ear mix gets its own balance |
+
+Full-rig channel plan (proposed, confirm at the desk): Drums on 1/2, Bass on 3, Click on 4. The click comes from Live's metronome sent to the **Cue** output (Preferences > Audio > Cue Out = 4), so it never reaches the main outs. How the laptop connects to the M32C (its USB audio card, if fitted, or another route) still needs checking.
+
 ## How the rig fits together
 
 ```
@@ -69,9 +83,7 @@ The laptop has a Chrome connection; the cloud session that built this repo did n
 ## Open questions for the user
 
 - Which foot controller they own, if any.
-- Audio interface model on the Windows laptop, and whether they want the click in their ears only (needs 4 outputs).
 - Whether they've bought EZdrummer 3, EZbass or AbleSet.
-- Monitoring: in-ear vs wedge, and whether a click is wanted at all. Check with the user before designing monitor mixes.
 
 ## Related
 
