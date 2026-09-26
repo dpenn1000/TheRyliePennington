@@ -30,7 +30,7 @@ Context for Claude sessions working in this repo. Read this first.
 
 ## Two audio setups (decided Sept 26, 2026)
 
-One Live set serves both. Switch the audio device in Preferences > Audio; the track routing below is what changes.
+**The State Fair (Oct 4) uses the quick rig: MOTU M2, no click, lights on myDMX.** One Live set serves both. Switch the audio device in Preferences > Audio; the track routing below is what changes.
 
 | | Quick rig | Full rig |
 |---|---|---|

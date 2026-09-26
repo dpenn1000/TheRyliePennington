@@ -7,6 +7,8 @@ The fair runs **Oct 1 to Nov 1, 2026** (Thursday to Sunday). Fill in the slot:
 - **Set length:** one set, 14 songs, 54:46
 - **Load-in and soundcheck:** _TBD_
 
+- **Rig:** the quick rig. MOTU M2 into the PA, no in-ears, no click, lights on myDMX.
+
 ## If the gig is in the first week (tight)
 
 Aim for something simple and solid, not complete.
