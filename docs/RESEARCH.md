@@ -6,7 +6,7 @@ Gathered September 2026. Items marked **(unverified)** couldn't be checked from 
 
 - **Ableton Live 12:** Intro $99 (16 tracks, **8 scenes**, which is too few for a set), Standard $439, Suite $749. One-time purchase. Suite includes all Ableton Packs (Session Drums, Drum Booth) and Max for Live.
 - **Digital Performer 12** can work live: a Clips window since DP 10 (clips up to 32 bars, scenes, pad controllers), the Chunks window for setlists, MIDI Song Select, and native MIDI timecode. DP 12 added the Arrangement Strip, better Track Freeze, stem separation and Atmos. Ableton was chosen for stage because clip launching is its core, plus AbleSet and Max for Live.
-- **AbleSet:** a setlist and remote control for Ableton that runs in a browser. It runs on Windows 10/11 and works in Android 7+ browsers on the same network. Licenses don't expire. Edition pricing **(unverified)**.
+- **AbleSet:** a setlist and remote control for Ableton that runs in a browser. It runs on Windows 10/11 and works in Android 7+ browsers on the same network. Licenses don't expire. AbleSet 3: **Intro $129** (1 computer, setlists, MIDI mapping, spoken cues, one lyrics track), **Standard $179** (2 computers, unlimited lyrics, AbleNet redundancy, OSC, Stream Deck), **Pro $269** (3 computers, mixer, canvas, scripting). Free trial with playback stopping every 15 minutes. Windows and macOS.
 - **LIA:** an AI assistant that controls Ableton by chat. Useful for building and producing, not a live performance tool **(site unverified)**.
 
 ## BandHelper
@@ -19,9 +19,9 @@ Gathered September 2026. Items marked **(unverified)** couldn't be checked from 
 
 ## Lighting
 
-- **ONYX:** MIDI macros can trigger cuelists; a "Note On" macro takes Channel, Data 1 (note), Data 2 (velocity) and runs Go on a cuelist. It supports MIDI timecode (the cuelist must be active). The Cuelist Options window sets button and fader actions. Exact menus **(unverified)**.
+- **ONYX:** MIDI macros can trigger cuelists; a "Note On" macro takes Channel, Data 1 (note), Data 2 (velocity) and runs Go on a cuelist. It supports MIDI timecode (the cuelist must be active). Verified steps: add a cue → **Add Macro** → **MIDIMACRO** → pick cuelist + **Go** → Note-On, channel, Data 1 from/to (note), Data 2 from/to (velocity) → **Apply**. The **MIDI In Event Viewer** can fill the fields from an incoming note. A macro is only active after its cue has been executed.
 - On one Windows PC, Ableton → ONYX needs a virtual MIDI port: **loopMIDI** (free, Tobias Erichsen). Others have used this with Reaper + ONYX.
-- **Blizzard LB-Par Hex:** RGBAW+UV, **6- or 11-channel** DMX modes, 12 built-in programs, sound active, master/slave. The full channel layout and the "Unplugged" variant's modes are **(unverified)**.
+- **Blizzard LB-Par Hex:** RGBAW+UV, **6- or 11-channel** DMX modes, 12 built-in programs, sound active, master/slave. Manual Rev. C (2019) 11-ch: 1 dimmer, 2–7 R/G/B/A/W/UV, 8 strobe, 9 programs (keep 0), 10 speed, 11 dimming curve. Menu: `Addr` (001–512), `CHNL` (`CH-1` 6ch / `CH-2` 11ch). Manual: https://www.fullcompass.com/common/files/39583-LBPARHEXUserManual.pdf
 - **myDMX 5:** Music Sync via tap tempo, MIDI clock or Ableton Link.
 
 ## Instruments
@@ -50,6 +50,12 @@ Gathered September 2026. Items marked **(unverified)** couldn't be checked from 
 - https://musictech.com/guides/buyers-guide/addictive-drums-2-vs-ezdrummer-3-vs-superior-drummer-3-which-drum-plugin-is-best/
 - https://dawplugins.net/vst-plugins/instruments/bass/ezbass/
 - https://azstatefair.com/events/arizona-state-fair/
+
+## The band (from the websites)
+
+- **daddylonglegsband.com:** "a vibrant and talented father-daughter duo who perform a diverse range of music, including country, bluegrass, rock, and popular favorites." Covers include "House of the Rising Sun." Past shows include the Wadsworth Atheneum and the Flowers & Fine Arts Festival (Connecticut). No setlist or State Fair date is posted.
+- **ryliepennington.com:** originally from Hartford, CT, now based in Arizona. Trains in voice, guitar and bass guitar; records in a home studio; writes original music with the band. Credits include Matilda (*Matilda the Musical*), Katie (*School of Rock*), the series *Popped*, and the CT VFW National Anthem contest win. Her play *Finding Your Voice* got an honorable mention at the Chestnut Street Playhouse Playwright Festival.
+- **Implications for the tracks:** the genre mix (country, bluegrass, rock, pop) calls for more feels than the two placeholders: a **train beat** (bluegrass/country), a **country two-step**, straight **rock**, and a **6/8 ballad** (fits "House of the Rising Sun"). The generator needs these added once the setlist is in.
 
 ## Not My Dog (Rylie's feature film)
 

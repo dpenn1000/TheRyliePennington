@@ -28,7 +28,10 @@ Heads-up: some programs call note 60 "C4" instead of "C3". If ONYX shows a note 
 
 The LB-Hex has **6-channel** and **11-channel** DMX modes. Use **11-channel**: it adds a master dimmer and strobe, which ONYX needs for smooth fades.
 
-Set each fixture (menu on the back) to 11-channel mode and these start addresses:
+On each fixture (buttons: MENU, UP, DOWN, ENTER):
+
+1. Scroll to **`CHNL`**, press ENTER, choose **`CH-2`** (11-channel), ENTER.
+2. Scroll to **`Addr`**, press ENTER, set the address from the table, ENTER.
 
 | Par | Address | Position |
 |---|---|---|
@@ -40,7 +43,23 @@ Set each fixture (menu on the back) to 11-channel mode and these start addresses
 
 Chain them with DMX cables: dongle → par 1 → par 2 → … → par 5. Put a DMX terminator in the last one if you have one (it stops flicker on long runs).
 
-If yours are the battery **LB-Hex Unplugged** model, the channel modes may differ. Check the label or manual and tell me, and I'll redo the addresses.
+### 11-channel layout (from the LB-Hex manual, Rev. C)
+
+| Ch | Function |
+|---|---|
+| 1 | Dimmer (master) |
+| 2 | Red |
+| 3 | Green |
+| 4 | Blue |
+| 5 | Amber |
+| 6 | White |
+| 7 | UV |
+| 8 | Strobe (slow → fast; 0 = off) |
+| 9 | Built-in programs / auto / sound active. **Keep at 0 for ONYX control.** |
+| 10 | Program speed |
+| 11 | Dimming curve |
+
+If a par ignores ONYX or runs its own color chase, channel 9 isn't at 0, or the fixture is stuck in a standalone mode (`Pr--`, `SOUN`). Reset to DMX by setting the address again.
 
 ## Step 2: Wire Ableton to ONYX (same PC)
 
@@ -53,10 +72,16 @@ Windows can't pass MIDI between two programs by itself. A free virtual cable fix
 
 ## Step 3: Build the looks in ONYX
 
-1. Patch 5 × **Blizzard LB-Hex, 11-channel** at the addresses above. ONYX's fixture library should have it; search "Blizzard".
-2. Make one cuelist per section look (Intro, Verse, Chorus, Bridge, Outro, Fill, Blackout).
-3. Assign each cuelist's MIDI trigger to its note from the chart. ONYX has a MIDI learn function: select the trigger, launch the matching scene in Ableton, and it learns the note. Menu names shift between ONYX versions; the MIDI section of the ONYX manual covers yours.
-4. Give each cue a **2-second fade** so looks glide instead of snapping. Give Fill a **0** fade in and a short release.
+1. Patch 5 × **Blizzard LB-Hex, 11-channel** at the addresses above. Search "Blizzard" in the fixture library. If it's missing, build a generic fixture from the channel table above.
+2. Make one cuelist per section look: Intro, Verse, Chorus, Bridge, Outro, Fill, Blackout.
+3. Make a separate cuelist called **`MIDI Listener`** with one cue. In that cue, add one MIDI macro per look:
+   - **Add Macro** → type **`MIDIMACRO`**. The **MIDI In Event Viewer** opens.
+   - Pick the target cuelist (e.g. Verse) and the action **Go**.
+   - MIDI command **Note-On**, channel 1, **Data 1** from/to = the note number from the chart (e.g. 62–62), **Data 2** from/to = 1–127.
+   - Shortcut: launch the matching scene in Ableton, then click the note when it shows up in the Event Viewer. That fills the fields in for you.
+   - Press **Apply**. Repeat for all seven looks.
+4. **The catch:** a MIDI macro only listens after the cue it lives in has been run. At the start of every show (and after reopening ONYX), **run the MIDI Listener cue once**. Put it on a button you can't miss, or the lights will ignore Ableton all night.
+5. Give each look cue a **2-second fade** so looks glide instead of snapping. Give Fill a **0** fade in and a short release.
 
 ## Step 4: Load the Lights clips in Ableton
 

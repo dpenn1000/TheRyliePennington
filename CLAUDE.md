@@ -21,7 +21,7 @@ Context for Claude sessions working in this repo. Read this first.
 | Show laptop | **Windows PC** | |
 | Lighting software | **Obsidian ONYX** with the **NX DMX USB dongle** | More powerful and expandable than myDMX. |
 | Lighting backup | **ADJ myDMX dongle** | Kept for quick setups and as the on-stage fallback. |
-| Fixtures | **5 × Blizzard LB-Hex (RGBAW+UV) pars** | Plan: 11-channel mode, addresses 1/12/23/34/45 (verify, see tasks). |
+| Fixtures | **5 × Blizzard LB-Hex (RGBAW+UV) pars** | 11-channel mode (`CHNL` → `CH-2`), addresses 1/12/23/34/45. Verified against the LB-Hex manual Rev. C. |
 | Setlists and lyrics | **BandHelper** on **Android tablets** | |
 | Song selection | **AbleSet** in the tablet browser (first gig) | BandHelper → Ableton MIDI link comes after the first gig. |
 | Drums | Suite's **Session Drums Studio** now; **EZdrummer 3** recommended upgrade | |
@@ -58,10 +58,13 @@ The laptop has a Chrome connection; the cloud session that built this repo did n
 
 1. **Pull the AZ State Fair setlist from BandHelper** (bandhelper.com web app: Repertoire > Set Lists; the Songs page has an Export button for account admins). For each song, capture title, tempo, key, time signature and duration. Save it as `docs/setlist-az-state-fair.md`.
 2. **Get the chord progression per section for each song.** Check BandHelper documents and lyrics first, then ask the user. Add each song to `SONGS` in `make_tracks.py` and regenerate the clips. Pick `feel` (straight/shuffle) and section `style` (light/verse/chorus/ending) per song. Ask the user when unsure.
-3. **Verify the LB-Hex DMX modes.** The plan assumes 6- or 11-channel modes; confirm from the Blizzard manual (blizzardpro.com product page or the manual PDF), including whether the user's units are the battery "Unplugged" model. Record the 11-channel layout in `ableton/LIGHTING.md`.
-4. **Verify the ONYX MIDI trigger steps** in the ONYX manual (support.obsidiancontrol.com: "Midi Macros", "Cuelist Options", "Function Assignments"). Search results indicate a MIDI "Note On" macro with Channel / Data 1 (note) / Data 2 (velocity) that runs Go on a cuelist. Replace the general wording in `ableton/LIGHTING.md` with exact menu paths.
-5. **Look at daddylonglegsband.com and ryliepennington.com** for the band's style, originals vs covers, and any song list; note it in `docs/RESEARCH.md`. Don't copy personal or health details about Rylie into this repo; it's public.
-6. Check the exact **AbleSet** edition and price (ableset.com) and whether the user has bought it.
+3. Ask whether they want **AbleSet** now (Intro $129 / Standard $179 / Pro $269; free trial stops playback every 15 minutes). Standard is the sensible pick: two computers, OSC, redundancy.
+
+### Done (Sept 26, cloud session)
+
+- LB-Hex 11-channel layout and menu steps verified from the manual; written into `ableton/LIGHTING.md`. Channel 9 (built-in programs) must stay at 0.
+- ONYX MIDI macro steps verified; written into `ableton/LIGHTING.md`. **A MIDIMACRO only listens after its cue has run**, so the show needs a "MIDI Listener" cue fired at startup.
+- Band and Rylie websites reviewed; see `docs/RESEARCH.md`.
 
 ## Open questions for the user
 
