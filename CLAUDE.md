@@ -75,7 +75,7 @@ The laptop has a Chrome connection; the cloud session that built this repo did n
 
 ## Related
 
-- An earlier copy of this work lives in `dpenn1000/DTech` under `band/ableton/` (draft PR #37). This repo is now the home for the band project.
+- An earlier copy of this work lives in `dpenn1000/DTech` under `band/ableton/` (PR #37, closed Sept 26, 2026, branch kept). This repo is the home for the band project.
 
 ## Writing style for anything the user reads
 
