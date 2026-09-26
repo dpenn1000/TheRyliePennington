@@ -2,9 +2,9 @@
 
 The fair runs **Oct 1 to Nov 1, 2026** (Thursday to Sunday). Fill in the slot:
 
-- **Date and time:** _TBD_
+- **Date and time:** Sunday, October 4, 2026, 1:00 to 2:00 pm
 - **Stage:** _TBD_
-- **Set length:** _TBD_
+- **Set length:** one set, 14 songs, 54:46
 - **Load-in and soundcheck:** _TBD_
 
 ## If the gig is in the first week (tight)

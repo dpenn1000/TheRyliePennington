@@ -9,9 +9,9 @@ Context for Claude sessions working in this repo. Read this first.
 - **Consequence for the rig:** on songs where Rylie plays bass, the backing track should be drums only. Set `"bass": False` on that song in `make_tracks.py`. Ask the user which songs those are.
 - The dad already uses **Digital Performer (DP)** for writing and recording and is new to Ableton.
 - **Goal:** live drum and bass backing tracks that sound natural and follow the band. Sections loop until the band moves on, so a verse can be stretched and a bridge skipped on stage. Lighting follows the same section changes.
-- **Next gig:** Arizona State Fair. The fair runs **Oct 1 to Nov 1, 2026, Thursday to Sunday**. The band's exact date and time slot are not yet recorded here. **Ask the user and write it below.**
-  - Gig date: _TBD_
-  - Set length: _TBD_
+- **Next gig:** Arizona State Fair. The fair runs **Oct 1 to Nov 1, 2026, Thursday to Sunday**. The band plays the fair's first weekend, so `docs/GIG-PLAN.md`'s tight plan applies (3 to 5 songs with tracks, myDMX for lights, ONYX later).
+  - Gig date: **Sunday, October 4, 2026, 1:00 to 2:00 pm**
+  - Set length: **one set, 14 songs, 54:46 in BandHelper** (51:31 of song time). Full list: `docs/setlist-az-state-fair.md`
 
 ## Decisions already made (don't re-litigate)
 
@@ -68,7 +68,6 @@ The laptop has a Chrome connection; the cloud session that built this repo did n
 
 ## Open questions for the user
 
-- Exact State Fair date, time slot and set length.
 - Which foot controller they own, if any.
 - Audio interface model on the Windows laptop, and whether they want the click in their ears only (needs 4 outputs).
 - Whether they've bought EZdrummer 3, EZbass or AbleSet.
