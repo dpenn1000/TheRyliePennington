@@ -80,6 +80,8 @@ You can't reach for a laptop mid-song. Map the scenes to a foot controller.
 
 **The fill trick:** Press the Fill switch during the last bar of a section. The fill plays for exactly one bar. During that bar, press the next section. It lands right on the downbeat, like the drummer saw you nod.
 
+**Sit-in players: mute, don't stop.** When a drummer or bassist sits in, turn that track off with its **Track Activator** (the numbered button at the bottom of the track). The clips keep running silently, so the other track and the lights stay in time, and switching back on mid-song lands in place. Map each activator to a key with **Ctrl+K** (for example `D` for drums, `B` for bass). If the pedal has spare switches or a second bank, map them there instead. Don't use `"bass": False` in `make_tracks.py` for this; that removes the bass clips for good. Keep both tracks built for every song and decide on the night.
+
 **Homework:** Run a full song without touching the laptop.
 
 ### Lesson 5: Gig-ready
