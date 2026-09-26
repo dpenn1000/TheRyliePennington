@@ -66,3 +66,11 @@ Gathered September 2026. Items marked **(unverified)** couldn't be checked from 
 - Film Threat: 7.5/10. Pennington "does not disappoint as Bridget ... practically perfect," "endearing, easy to watch, clever, curious, confident and respectful." FilmCarnage calls her "convincing as a tween pushed into an uncomfortable world."
 - Show angle: "the star of *Not My Dog*" is a hook for the State Fair intro, merch table and posters. A rescue-dog tie-in (a local shelter at the gig) fits the film's message.
 - Sources: https://filmthreat.com/reviews/not-my-dog/ · https://filmcarnage.com/2026/09/18/review-not-my-dog/ · https://www.imdb.com/title/tt34769247/ · https://www.trashpanda.pictures/features/not-my-dog · https://www.amazon.com/Not-My-Dog-Danny-LeGare/dp/B0H8GCQ4M5 · https://tv.apple.com/us/movie/not-my-dog/umc.cmc.4q78w216o6o06zg0sq3mml4jt
+
+## Obsidian NX DMX (checked Sept 26, 2026, obsidiancontrol.com/products/nx-dmx)
+
+- USB-powered DMX node with **2 DMX ports**, each can be in or out, with RDM. **5-pin locking XLR.**
+- Plug and play with ONYX, no driver.
+- Comes with an **ONYX NOVA license: up to 4 universes on a PC** with no separate license. 5 LB-Hex pars at 11 channels use 55 of the 512 channels in one universe, so one port is plenty.
+- Needs ONYX 4.8 or later. PC minimum: Windows 10, Intel Core i3 6th gen or newer, 8 GB RAM, SSD, 40 GB free, a 1280x768 screen.
+

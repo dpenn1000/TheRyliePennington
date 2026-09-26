@@ -41,6 +41,8 @@ On each fixture (buttons: MENU, UP, DOWN, ENTER):
 | 4 | 034 | Stage right |
 | 5 | 045 | Far stage right |
 
+The NX DMX has two 5-pin XLR ports; use port 1 (Universe 1). If the pars' DMX jacks are 3-pin, you need a 5-pin to 3-pin adapter or cable. Check before gig day.
+
 Chain them with DMX cables: dongle → par 1 → par 2 → … → par 5. Put a DMX terminator in the last one if you have one (it stops flicker on long runs).
 
 ### 11-channel layout (from the LB-Hex manual, Rev. C)
