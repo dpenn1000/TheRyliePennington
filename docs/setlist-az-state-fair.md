@@ -10,7 +10,7 @@ Pulled from BandHelper on September 26, 2026. "Chart shapes" is what the guitar 
 | 2 | Halfway Gone, Halfway Brave | Original | Ab | G | 1 | ? | 4/4 | 3:15 |
 | 3 | Big Yellow Taxi | Cover, Joni Mitchell | D | G | ? | ? | ? | 2:16 |
 | 4 | House of the Rising Sun | Cover, The Animals | Am | Am | ? | ? | ? (6/8 on the record) | 4:20 |
-| 5 | Trains I Missed | Cover, Balsam Range | B | B, or G with capo 4 | 4? | ? | ? | 3:48 |
+| 5 | Trains I Missed | Cover, Balsam Range | B | A (capo 2) | 2 | ? | ? | 3:48 |
 | 6 | Choosin' Texas | Cover, Ella Langley | Db | C | 1 | 110 | 4/4 | 3:50 |
 | 7 | Kiss Me | Cover, Sixpence None The Richer | Eb | D | 1 | 100 | 4/4 | 3:24 |
 | 8 | These Old Wheels | Cover, Mandolin Orange | ? | G | ? | ? | ? | 2:36 |
@@ -45,5 +45,6 @@ The charts live in the band's Lyrics and Chords folder on OneDrive, not in this 
 ## Things to settle
 
 - Big Yellow Taxi: BandHelper says D, but the chart is in G shapes. Capo 7, or does one of them need fixing?
+- Trains I Missed: capo 2 in B means A shapes. The chart on file is in B shapes (B, F#, G#m, E) and the other version is capo 4, so neither matches yet.
 - Need You Now and These Old Wheels have no key in BandHelper.
 - Chord timing: some charts need adjusting before their tracks get built.
