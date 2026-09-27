@@ -35,10 +35,14 @@ SONGS = [
         "tempo": 104,            # try 100 and 108 at rehearsal
         "feel": "straight",
         "transpose": 2,          # G shapes, capo 2, sounds in A
+        "verse_stick": True,     # cross-stick verses, snare from the pre-chorus on
+        # Song order from the chart. The outro's C C C G is the "halfway gone x3" tag.
+        "form": ["1-intro", "2-verse", "3-prechorus", "4-chorus", "2-verse", "3-prechorus", "4-chorus",
+                 "5-bridge", "4-chorus", "6-outro"],
         "sections": {
             "1-intro":     {"chords": ["G", "C", "Em", "D"], "style": "light"},
             "2-verse":     {"chords": ["G", "C", "Em", "D"] * 2, "style": "verse"},
-            "3-prechorus": {"chords": ["Em", "C", "G", "D", "D", "D"], "style": "verse"},
+            "3-prechorus": {"chords": ["Em", "C", "G", "D", "D", "D"], "style": "verse", "snare": True},
             "4-chorus":    {"chords": ["G", "C", "Em", "D"] * 2 + ["C", "G", "G", "G"], "style": "chorus"},
             "5-bridge":    {"chords": ["Am", "G", "Am", "D", "Am", "C", "C", "D"], "style": "light"},
             "6-outro":     {"chords": ["C", "C", "C", "G"], "style": "ending"},
@@ -157,7 +161,7 @@ def swing(pos_in_beat, feel):
 
 
 # ---------------------------------------------------------------- drums
-def drum_bar(h, bar, style, feel, fill=False, first=False, last_bar=False):
+def drum_bar(h, bar, style, feel, fill=False, first=False, last_bar=False, stick=False):
     ev = []
     b0 = bar * BAR
 
@@ -195,7 +199,7 @@ def drum_bar(h, bar, style, feel, fill=False, first=False, last_bar=False):
     for beat in (1, 3):
         if fill and beat == 3:
             continue
-        if style == "light":
+        if style == "light" or stick:
             hit(beat * PPQ, STICK, int(88 * loud), push=6)
         else:
             hit(beat * PPQ, SNARE, int(108 * loud), push=8)
@@ -212,7 +216,7 @@ def drum_bar(h, bar, style, feel, fill=False, first=False, last_bar=False):
         hit(k, KICK, int((105 if k in (0, 2 * PPQ) else 88) * loud), push=-3)
 
     # ghost notes on the snare, the thing that makes it sound played
-    if style in ("verse", "chorus"):
+    if style in ("verse", "chorus") and not stick:
         for beat in range(4):
             for g in ((E16 * 3,) if not shuffle else (int(PPQ * 2 / 3) + 40,)):
                 if h.chance(0.28) and not (fill and beat == 3):
@@ -241,14 +245,16 @@ def drum_fill(h, start, style, feel):
     return ev
 
 
-def drums(section, feel, seed):
+def drums(section, feel, seed, verse_stick=False):
+    """verse_stick: cross-stick backbeat in verse-style sections (Americana/country verses)."""
     h = Human(seed)
+    stick = verse_stick and section["style"] == "verse" and not section.get("snare")
     n = len(section["chords"])
     ev = []
     for bar in range(n):
         last = bar == n - 1
         fill = last and section["style"] != "ending"
-        ev += drum_bar(h, bar, section["style"], feel, fill=fill, first=bar == 0, last_bar=last)
+        ev += drum_bar(h, bar, section["style"], feel, fill=fill, first=bar == 0, last_bar=last, stick=stick)
     return ev
 
 
@@ -268,10 +274,16 @@ def parse_chord(sym, transpose=0):
     return r, minor, (NOTE[bass] + transpose) % 12 if bass else r
 
 
+# Toontrack's EZbass puts the open low E string on MIDI 40 and uses 21-32 for keyswitches
+# (ghost notes, slides, legato), so the General MIDI bass octave (28-39) fires slides instead
+# of notes. Stay in 40-51.
+BASS_LOW = 40
+
+
 def bass_pitch(pc):
-    """Place a pitch class in the bass range E1 (28) .. D#2 (39)."""
-    p = 24 + pc
-    return p + 12 if p < 28 else p
+    """Place a pitch class in the bass range, low E string (40) up to D# (51)."""
+    p = BASS_LOW - 4 + pc
+    return p + 12 if p < BASS_LOW else p
 
 
 def bass(section, feel, seed, transpose=0):
@@ -287,7 +299,7 @@ def bass(section, feel, seed, transpose=0):
         nxt = parse_chord(chords[(bar + 1) % len(chords)], transpose)[2]
         target = bass_pitch(nxt)
         # approach note: a half step below or above the next root
-        approach = target - 1 if h.chance(0.6) and target > 28 else target + 1
+        approach = target - 1 if h.chance(0.6) and target > BASS_LOW else target + 1
         b0 = bar * BAR
         last = bar == len(chords) - 1
 
@@ -344,20 +356,26 @@ def main():
     for s, song in enumerate(SONGS):
         out = os.path.join(here, "clips", song["name"])
         os.makedirs(out, exist_ok=True)
-        full_d, full_b, offset = [], [], 0
+        parts = {}
         for i, (sec_name, sec) in enumerate(song["sections"].items()):
             seed = s * 100 + i
             bars = len(sec["chords"])
-            d = drums(sec, song["feel"], seed)
+            d = drums(sec, song["feel"], seed, song.get("verse_stick", False))
             b = bass(sec, song["feel"], seed, song.get("transpose", 0))
             write_mid(os.path.join(out, f"{sec_name}-drums.mid"), d, f"{sec_name} drums", song["tempo"], bars)
             if song.get("bass", True):
                 write_mid(os.path.join(out, f"{sec_name}-bass.mid"), b, f"{sec_name} bass", song["tempo"], bars)
             write_mid(os.path.join(out, f"{sec_name}-lights.mid"), lights(sec_name), f"{sec_name} lights",
                       song["tempo"], bars)
+            parts[sec_name] = (d, b, bars)
+        # Full song: the sections in song order ("form"), or each section once.
+        full_d, full_b, full_l, offset = [], [], [], 0
+        for sec_name in song.get("form", list(song["sections"])):
+            d, b, bars = parts[sec_name]
             full_d += [(t + offset, *rest) for t, *rest in d]
             full_b += [(min(t, bars * BAR - E16) + offset, n, v, min(ln, bars * BAR - t), c)
                        for t, n, v, ln, c in b]
+            full_l += [(t + offset, *rest) for t, *rest in lights(sec_name)]
             offset += bars * BAR
         fill_no = len(song["sections"]) + 1
         write_mid(os.path.join(out, f"{fill_no}-fill-drums.mid"), fill_clip(song["feel"], s * 100 + 50),
@@ -368,6 +386,7 @@ def main():
         write_mid(os.path.join(out, "0-full-song-drums.mid"), full_d, "full drums", song["tempo"], total)
         if song.get("bass", True):
             write_mid(os.path.join(out, "0-full-song-bass.mid"), full_b, "full bass", song["tempo"], total)
+        write_mid(os.path.join(out, "0-full-song-lights.mid"), full_l, "full lights", song["tempo"], total)
         print(f"{song['name']}: {song['tempo']} BPM, {song['feel']} -> {out}")
 
 
