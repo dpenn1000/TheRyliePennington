@@ -11,7 +11,7 @@ Everything the band owns or plans to buy, and how it's wired. Decided Sept 26, 2
 | Interface | MOTU M2 (quick rig) | MOTU 828es, 48 kHz, internal clock |
 | Live | Ableton Live 12 Suite | Ableton Live 12 Suite 12.4.6, ASIO on MOTU Pro Audio, VST3 system folders on |
 | Drums | EZdrummer 3 (to install) | EZdrummer 3 + Acoustic Songwriter EZX + Latin Cuban Percussion EZX (installed); Superior Drummer 3 Orchestral Edition (later) |
-| Bass | EZbass (to install) | EZbass + Upright EBX + Session Player EBX (installed); Trilian (later), and Rylie playing for real |
+| Bass | EZbass (to install) | EZbass + Upright EBX + Session Player EBX (installed); Trilian is a possible future upgrade, not owned (corrected 2026-09-27), and Rylie playing for real |
 
 **Shared files:** the project lives on the **Samsung T7 SSD** (exFAT, `E:` on the studio-pc) in `Daddy Long Legs\`, and moves between machines on the drive. The drive letter may differ on the laptop; Live finds files relative to each project folder. Use File > Collect All and Save before unplugging. Sample libraries install on each machine separately, never on the T7 or in OneDrive. Charts, marketing, photos and video stay in OneDrive (`Music\Daddy Long Legs\`).
 
@@ -52,7 +52,7 @@ Bought and installed on the studio-pc Sept 26, 2026 (installer log: every packag
 
 Later: The Eighties EBX (Wal + Minimoog), Session Legend EBX (BB3000), Americana EBX (Tele bass), Singer-Songwriter EZX.
 
-EZbass for live and writing; Trilian for production. Parts are MIDI, so they move between the two unchanged. For Rylie's originals, she plays the real bass part in the studio.
+EZbass for live, writing, and production; it's not owned yet, but if Trilian gets bought later, parts are MIDI, so they'd move over unchanged. For Rylie's originals, she plays the real bass part in the studio.
 
 ## Guitar rig (dad, acoustic)
 
