@@ -34,7 +34,9 @@ Daddy Long Legs\
 ### Show laptop problems (open)
 
 - **Battery won't charge.** Four batteries this year. The current one is aftermarket and reports 111% of design capacity, 0% charge, not charging. The laptop dies the instant it's unplugged. A genuine Lenovo 135 W charger is on order; the current brick may be non-Lenovo. Next test: genuine charger, then BIOS "Disable Built-in Battery" reset, then a genuine battery. **Use a UPS on stage.**
-- **Freezes and crashes.** Bugcheck 0x154 (Aug 3, 4, 8, Sept 26), 0x1E (Sept 17), hard freezes Sept 20 and 26. Fixes in progress: MOTU M2 driver 4.6.0.705 (installed Sept 26), NVIDIA Studio driver (was 457.49 from 2020), Lenovo System Update, memory test (`mdsched`). If it keeps happening, suspect hardware.
+- **Freezes and crashes.** Bugcheck 0x154 (Aug 3, 4, 8, Sept 26), 0x1E (Sept 17), 0xEF during Modern Standby (Sept 27, 5:43 am, after an hour of the Intel Wi-Fi card waking every 2 minutes), hard freezes Sept 20 and 26. **Likely cause: devices (the Intel H10 SSD, the Wi-Fi card) failing to come back from low-power states.** Memory test passed Sept 26.
+  - Done Sept 26 to 27: MOTU M2 driver 4.6.0.705, NVIDIA driver 32.0.16.1714 (Sept 2026), Lenovo System Update (nothing newer), Smart Performance auto-scans off, and on AC power: never sleep, drive never powers down, PCIe link power saving off, no network in standby.
+  - Next if it crashes again: newer Intel Wi-Fi driver, then Intel's current UHD 630 graphics driver (Lenovo's is from Feb 2020; make a restore point first).
 - `laptop/gig-mode-on.ps1` / `laptop/gig-mode-off.ps1` (run in an admin PowerShell) close background apps and switch to a no-throttle power plan for shows.
 
 ## Toontrack
