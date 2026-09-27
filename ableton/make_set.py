@@ -27,6 +27,38 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 # Re-save it from a newer Live (File > New Live Set, Save As) if the laptop runs a newer version.
 TEMPLATE = os.path.join(HERE, "template.als")
 TRACKS = [("Drums", "drums", 1), ("Bass", "bass", 13), ("Lights", "lights", 58)]  # name, file suffix, colour
+VARIANT_NAMES = {"twofeel": "Two-Feel", "walkup": "Walk-Up", "pop8": "Pop 8ths", "sparse": "Sparse"}
+
+
+def song_tracks(clip_dir):
+    """Drums, Bass, one extra Bass track per bass variant on disk (<section>-bass-<variant>.mid),
+    then Lights. Variant tracks start switched off; turn one on with its Track Activator."""
+    found = {f.rsplit("-bass-", 1)[1][:-4] for f in os.listdir(clip_dir) if "-bass-" in f}
+    variants = [v for v in VARIANT_NAMES if v in found] + sorted(found - set(VARIANT_NAMES))
+    extra = [(f"Bass {VARIANT_NAMES.get(v, v)}", f"bass-{v}", 13) for v in variants]
+    return TRACKS[:2] + extra + TRACKS[2:]
+
+
+def renumber_ids(t, next_id):
+    """Give a copied track fresh Pointee Ids. Returns (track xml, next free id)."""
+    counter = [next_id]
+
+    def fresh(m):
+        counter[0] += 1
+        return f'<{m.group(1)} Id="{counter[0] - 1}"'
+    # Covers AutomationTarget, the *ModulationTargets, Pointee and ControllerTargets.0-130.
+    t = re.sub(r'<([\w.]*(?:Target|Pointee)[\w.]*) Id="\d+"', fresh, t)
+    # Track Ids share the Pointee Id space, so they come from the same counter.
+    t = re.sub(r'^<MidiTrack Id="\d+"', f'<MidiTrack Id="{counter[0]}"', t)
+    return t, counter[0] + 1
+
+
+def name_track(t, tname, color, active=True):
+    t = re.sub(r'<EffectiveName Value="[^"]*" />', f'<EffectiveName Value="{tname}" />', t, count=1)
+    t = re.sub(r'<UserName Value="[^"]*" />', f'<UserName Value="{escape(tname)}" />', t, count=1)
+    t = re.sub(r'(</Name>\s*<Color Value=")\d+', rf"\g<1>{color}", t, count=1)
+    return re.sub(r'(<Speaker>\s*<LomId Value="0" />\s*<Manual Value=")\w+', rf"\g<1>{str(active).lower()}",
+                  t, count=1)
 SECTION_NAMES = {"prechorus": "Pre-Chorus", "full-song": "Full Song"}
 
 
@@ -182,21 +214,11 @@ def stamp_tracks(x, clip_dir, stems, names):
     next_id = int(re.search(r'<NextPointeeId Value="(\d+)"', x).group(1))
 
     built = []
-    for n, (tname, suffix, color) in enumerate(TRACKS):
+    for n, (tname, suffix, color) in enumerate(song_tracks(clip_dir)):
         t = pattern
         if n:
-            def renumber(m):
-                nonlocal next_id
-                next_id += 1
-                return f'<{m.group(1)} Id="{next_id - 1}"'
-            # Covers AutomationTarget, the *ModulationTargets, Pointee and ControllerTargets.0-130.
-            t = re.sub(r'<([\w.]*(?:Target|Pointee)[\w.]*) Id="\d+"', renumber, t)
-            # Track Ids share the Pointee Id space, so they come from the same counter.
-            t = re.sub(r'^<MidiTrack Id="\d+"', f'<MidiTrack Id="{next_id}"', t)
-            next_id += 1
-        t = re.sub(r'<EffectiveName Value="[^"]*" />', f'<EffectiveName Value="{tname}" />', t, count=1)
-        t = re.sub(r'<UserName Value="[^"]*" />', f'<UserName Value="{tname}" />', t, count=1)
-        t = re.sub(r'(</Name>\s*<Color Value=")\d+', rf"\g<1>{color}", t, count=1)
+            t, next_id = renumber_ids(t, next_id)
+        t = name_track(t, tname, color, active="-" not in suffix)
         clips = song_clips(clip_dir, suffix, stems, names, color)
         t = re.sub(r"<ClipSlotList>.*?</ClipSlotList>", lambda m: clip_slots(clips), t, count=1, flags=re.S)
         built.append(t)
@@ -205,10 +227,25 @@ def stamp_tracks(x, clip_dir, stems, names):
 
 
 def refresh_tracks(x, clip_dir, stems, names, path):
-    """Swap the Session clips on the Drums, Bass and Lights tracks of an existing set."""
-    for tname, suffix, color in TRACKS:
-        m = re.search(rf'<MidiTrack Id=(?:(?!</MidiTrack>).)*?<UserName Value="{tname}" />.*?</MidiTrack>',
-                      x, flags=re.S)
+    """Swap the Session clips on the tracks of an existing set. A bass-variant track that isn't
+    there yet is copied from the Bass track, instrument and sound included, and switched off."""
+    def find(tname):
+        return re.search(rf'<MidiTrack Id=(?:(?!</MidiTrack>).)*?<UserName Value="{re.escape(escape(tname))}" />'
+                         r'.*?</MidiTrack>', x, flags=re.S)
+
+    for tname, suffix, color in song_tracks(clip_dir):
+        m = find(tname)
+        if not m and suffix.startswith("bass-"):
+            base = find("Bass")
+            next_id = int(re.search(r'<NextPointeeId Value="(\d+)"', x).group(1))
+            t, next_id = renumber_ids(base.group(0), next_id)
+            t = name_track(t, tname, color, active=False)
+            # Insert after the last bass track so they sit together.
+            last = max((b for b in (find(n) for n, sfx, _ in song_tracks(clip_dir) if sfx.startswith("bass"))
+                        if b), key=lambda b: b.end())
+            x = x[:last.end()] + "\n" + t + x[last.end():]
+            x = re.sub(r'<NextPointeeId Value="\d+"', f'<NextPointeeId Value="{next_id}"', x, count=1)
+            m = find(tname)
         if not m:
             sys.exit(f"no track named {tname} in {path}")
         clips = song_clips(clip_dir, suffix, stems, names, color)
@@ -229,7 +266,8 @@ def build(song_name, out_path, template=None, update=False):
     # One scene per section. With a "form", the scenes run in song order (Verse 1, Verse 2...) and
     # each one launches the next when it ends, so launching the first scene plays the song. Sections
     # outside the form (the fill) and the full-song take follow, with no follow action.
-    all_stems = sorted({f.rsplit("-", 1)[0] for f in os.listdir(clip_dir) if f.endswith(".mid")})
+    all_stems = sorted({re.sub(r"-(drums|lights|bass(-\w+)?)\.mid$", "", f)
+                        for f in os.listdir(clip_dir) if f.endswith(".mid")})
     label = {st: SECTION_NAMES.get(st.split("-", 1)[1], st.split("-", 1)[1].replace("-", " ").title())
              for st in all_stems}
     form = song.get("form")

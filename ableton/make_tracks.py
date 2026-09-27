@@ -36,6 +36,7 @@ SONGS = [
         "feel": "straight",
         "transpose": 2,          # G shapes, capo 2, sounds in A
         "verse_stick": True,     # cross-stick verses, snare from the pre-chorus on
+        "bass_variants": ["twofeel", "walkup", "pop8", "sparse"],  # each gets its own Bass track
         # Song order from the chart. The outro's C C C G is the "halfway gone x3" tag.
         "form": ["1-intro", "2-verse", "3-prechorus", "4-chorus", "2-verse", "3-prechorus", "4-chorus",
                  "5-bridge", "4-chorus", "6-outro"],
@@ -286,7 +287,28 @@ def bass_pitch(pc):
     return p + 12 if p < BASS_LOW else p
 
 
-def bass(section, feel, seed, transpose=0):
+# Bass styles a song can audition with "bass_variants". Each one is written to
+# <section>-bass-<variant>.mid and gets its own track in the Live Set; "band" is the default line.
+BASS_STYLES = {
+    "band": "the default: root-fifth verses, driving 8ths in choruses",
+    "twofeel": "country two-beat: root on 1, fifth on 3, pickup into chord changes",
+    "walkup": "quarter notes that walk up (or down) into each new chord",
+    "pop8": "steady 8ths on the root, octave pops in choruses",
+    "sparse": "one long note a bar, halves in choruses",
+}
+
+
+def walk(root, target):
+    """Three quarter notes leading into target: from below (G A B -> C) or, if that drops out of
+    range, from above."""
+    if target - 5 >= BASS_LOW:
+        return [target - 5, target - 3, target - 1]
+    return [target + 5, target + 3, target + 1]
+
+
+def bass(section, feel, seed, transpose=0, variant="band"):
+    if variant != "band":
+        return bass_variant(section, feel, seed, transpose, variant)
     h = Human(seed + 1000)
     chords = section["chords"]
     style = section["style"]
@@ -330,6 +352,70 @@ def bass(section, feel, seed, transpose=0):
     return ev
 
 
+def bass_variant(section, feel, seed, transpose, variant):
+    h = Human(seed + 2000 + sum(map(ord, variant)))
+    chords = section["chords"]
+    style = section["style"]
+    busy = style in ("verse", "chorus")
+    ev = []
+    for bar, sym in enumerate(chords):
+        r, minor, low = parse_chord(sym, transpose)
+        root = bass_pitch(low)
+        fifth = bass_pitch((r + 7) % 12)
+        nxt_sym = chords[(bar + 1) % len(chords)]
+        target = bass_pitch(parse_chord(nxt_sym, transpose)[2])
+        last = bar == len(chords) - 1
+        changes = not last and nxt_sym != sym
+        b0 = bar * BAR
+        sw = swing(E8, feel)
+
+        def note(tick, p, vel, length):
+            ev.append((h.t(b0 + tick, -2, 5), p, h.v(vel, 5), length, 0))
+
+        if style == "ending" and last:
+            note(0, root, 105, BAR - E8)
+            continue
+
+        if variant == "twofeel":
+            note(0, root, 100, 2 * PPQ - 40)
+            if changes and style == "chorus":
+                note(2 * PPQ, fifth, 88, PPQ - 30)
+                note(3 * PPQ + sw, target - 1 if target - 1 >= BASS_LOW else target + 1, 80, E8 - 20)
+            else:
+                note(2 * PPQ, fifth, 88, 2 * PPQ - 40)
+        elif variant == "walkup":
+            if not busy:
+                note(0, root, 92, 2 * PPQ - 40)
+                note(2 * PPQ, fifth, 82, 2 * PPQ - 40)
+            elif changes:
+                note(0, root, 100, PPQ - 30)
+                for k, p in enumerate(walk(root, target)):
+                    note((k + 1) * PPQ, p, 84 + 4 * k, PPQ - 30)
+            else:
+                for k, p in enumerate([root, fifth, root, fifth]):
+                    note(k * PPQ, p, 100 if k % 2 == 0 else 84, PPQ - 30)
+        elif variant == "pop8":
+            vel = {"light": 72, "verse": 84, "chorus": 96}.get(style, 84)
+            for i in range(8):
+                beat, off = divmod(i, 2)
+                pos = beat * PPQ + (sw if off else 0)
+                p = root
+                if style == "chorus" and i == 3:
+                    p = root + 12  # octave pop on the and of 2
+                if changes and i == 7 and busy:
+                    p = target - 1 if target - 1 >= BASS_LOW else target + 1
+                note(pos, p, vel + (8 if off == 0 else -6), E8 - 30)
+        elif variant == "sparse":
+            if style == "chorus":
+                note(0, root, 96, 2 * PPQ - 40)
+                note(2 * PPQ, fifth if h.chance(0.5) else root, 86, 2 * PPQ - 40)
+            else:
+                note(0, root, 92 if busy else 84, BAR - E8)
+        else:
+            raise ValueError(f"unknown bass variant {variant}")
+    return ev
+
+
 # ---------------------------------------------------------------- lights
 # One note on the downbeat of each section. ONYX maps each note to a cuelist.
 # Ableton names: C3 = 60. Keep this table in sync with LIGHTING.md.
@@ -356,7 +442,7 @@ def main():
     for s, song in enumerate(SONGS):
         out = os.path.join(here, "clips", song["name"])
         os.makedirs(out, exist_ok=True)
-        parts = {}
+        parts, variants = {}, {}
         for i, (sec_name, sec) in enumerate(song["sections"].items()):
             seed = s * 100 + i
             bars = len(sec["chords"])
@@ -365,16 +451,25 @@ def main():
             write_mid(os.path.join(out, f"{sec_name}-drums.mid"), d, f"{sec_name} drums", song["tempo"], bars)
             if song.get("bass", True):
                 write_mid(os.path.join(out, f"{sec_name}-bass.mid"), b, f"{sec_name} bass", song["tempo"], bars)
+                for v in song.get("bass_variants", []):
+                    bv = bass(sec, song["feel"], seed, song.get("transpose", 0), v)
+                    variants.setdefault(v, {})[sec_name] = bv
+                    write_mid(os.path.join(out, f"{sec_name}-bass-{v}.mid"), bv, f"{sec_name} bass {v}",
+                              song["tempo"], bars)
             write_mid(os.path.join(out, f"{sec_name}-lights.mid"), lights(sec_name), f"{sec_name} lights",
                       song["tempo"], bars)
             parts[sec_name] = (d, b, bars)
         # Full song: the sections in song order ("form"), or each section once.
         full_d, full_b, full_l, offset = [], [], [], 0
+        full_v = {v: [] for v in variants}
         for sec_name in song.get("form", list(song["sections"])):
             d, b, bars = parts[sec_name]
             full_d += [(t + offset, *rest) for t, *rest in d]
             full_b += [(min(t, bars * BAR - E16) + offset, n, v, min(ln, bars * BAR - t), c)
                        for t, n, v, ln, c in b]
+            for v in variants:
+                full_v[v] += [(min(t, bars * BAR - E16) + offset, n, vel, min(ln, bars * BAR - t), c)
+                              for t, n, vel, ln, c in variants[v][sec_name]]
             full_l += [(t + offset, *rest) for t, *rest in lights(sec_name)]
             offset += bars * BAR
         fill_no = len(song["sections"]) + 1
@@ -386,6 +481,8 @@ def main():
         write_mid(os.path.join(out, "0-full-song-drums.mid"), full_d, "full drums", song["tempo"], total)
         if song.get("bass", True):
             write_mid(os.path.join(out, "0-full-song-bass.mid"), full_b, "full bass", song["tempo"], total)
+            for v, ev in full_v.items():
+                write_mid(os.path.join(out, f"0-full-song-bass-{v}.mid"), ev, f"full bass {v}", song["tempo"], total)
         write_mid(os.path.join(out, "0-full-song-lights.mid"), full_l, "full lights", song["tempo"], total)
         print(f"{song['name']}: {song['tempo']} BPM, {song['feel']} -> {out}")
 
