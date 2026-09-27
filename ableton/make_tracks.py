@@ -7,7 +7,7 @@ ready to drag into Session View clip slots.
 
 To add a song, copy an entry in SONGS and change tempo, feel and chords.
 Chords are one per bar: "G", "Em", "C/E" (slash = bass note), "D7", etc.
-Write chords in chart shapes and set "transpose" to the capo fret; the bass sounds in the real key.
+Write chords in the sounding key (what the band hears), not in capo shapes.
 Set "bass": False on a song when Rylie plays bass live; only drums and lights are written.
 """
 import os
@@ -27,71 +27,71 @@ NOTE = {"C": 0, "C#": 1, "Db": 1, "D": 2, "D#": 3, "Eb": 3, "E": 4, "F": 5,
         "F#": 6, "Gb": 6, "G": 7, "G#": 8, "Ab": 8, "A": 9, "A#": 10, "Bb": 10, "B": 11}
 
 SONGS = [
-    # Chords are written in chart shapes, exactly as they appear in the Lyrics and Chords
-    # charts. "transpose" is the capo: it moves the bass to the sounding key.
+    # Chords are written in the sounding key, the key the band hears and every other instrument
+    # plays in. The guitar's capo and chart shapes are noted beside "key" for reference only.
     # Bar counts are estimates from the lyric lines. Fix them at rehearsal and re-run.
     {
         "name": "02-halfway-gone",
         "tempo": 104,            # try 100 and 108 at rehearsal
         "feel": "straight",
-        "transpose": 2,          # G shapes, capo 2, sounds in A
+        "key": "A",            # sounding key. Guitar: G shapes, capo 2
         "verse_stick": True,     # cross-stick verses, snare from the pre-chorus on
         "bass_variants": ["twofeel", "walkup", "pop8", "sparse"],  # each gets its own Bass track
-        # Song order from the chart. The outro's C C C G is the "halfway gone x3" tag.
+        # Song order from the chart. The outro's D D D A is the "halfway gone x3" tag.
         "form": ["1-intro", "2-verse", "3-prechorus", "4-chorus", "2-verse", "3-prechorus", "4-chorus",
                  "5-bridge", "4-chorus", "6-outro"],
         "sections": {
-            "1-intro":     {"chords": ["G", "C", "Em", "D"], "style": "light"},
-            "2-verse":     {"chords": ["G", "C", "Em", "D"] * 2, "style": "verse"},
-            "3-prechorus": {"chords": ["Em", "C", "G", "D", "D", "D"], "style": "verse", "snare": True},
-            "4-chorus":    {"chords": ["G", "C", "Em", "D"] * 2 + ["C", "G", "G", "G"], "style": "chorus"},
-            "5-bridge":    {"chords": ["Am", "G", "Am", "D", "Am", "C", "C", "D"], "style": "light"},
-            "6-outro":     {"chords": ["C", "C", "C", "G"], "style": "ending"},
+            "1-intro":     {"chords": ["A", "D", "F#m", "E"], "style": "light"},
+            "2-verse":     {"chords": ["A", "D", "F#m", "E"] * 2, "style": "verse"},
+            "3-prechorus": {"chords": ["F#m", "D", "A", "E", "E", "E"], "style": "verse", "snare": True},
+            "4-chorus":    {"chords": ["A", "D", "F#m", "E"] * 2 + ["D", "A", "A", "A"], "style": "chorus"},
+            "5-bridge":    {"chords": ["Bm", "A", "Bm", "E", "Bm", "D", "D", "E"], "style": "light"},
+            "6-outro":     {"chords": ["D", "D", "D", "A"], "style": "ending"},
         },
     },
     {
         "name": "06-choosin-texas",
         "tempo": 110,
         "feel": "straight",
-        "transpose": 1,          # C shapes, capo 1, sounds in Db
+        "key": "Db",           # sounding key. Guitar: C shapes, capo 1
         "sections": {
-            "1-intro":  {"chords": ["Dm7", "C", "C", "C", "Dm7", "F", "C", "C"], "style": "light"},
-            "2-verse":  {"chords": ["C", "Dm7", "C", "C", "Dm7", "Dm7", "C", "C", "F", "F", "G", "G"],
+            "1-intro":  {"chords": ["Ebm7", "Db", "Db", "Db", "Ebm7", "Gb", "Db", "Db"], "style": "light"},
+            "2-verse":  {"chords": ["Db", "Ebm7", "Db", "Db", "Ebm7", "Ebm7", "Db", "Db", "Gb", "Gb", "Ab", "Ab"],
                          "style": "verse"},
-            "3-chorus": {"chords": ["F", "F", "C", "C", "Dm7", "Dm7", "G", "G",
-                                    "Fmaj7", "Fmaj7", "Am7", "Am7", "F", "F", "G", "C"], "style": "chorus"},
-            "4-bridge": {"chords": ["F", "G", "F/A", "G/B", "F", "G", "Dm7", "G"], "style": "light"},
-            "5-outro":  {"chords": ["Dm", "C", "Dm", "F", "C"], "style": "ending"},
+            "3-chorus": {"chords": ["Gb", "Gb", "Db", "Db", "Ebm7", "Ebm7", "Ab", "Ab",
+                                    "Gbmaj7", "Gbmaj7", "Bbm7", "Bbm7", "Gb", "Gb", "Ab", "Db"], "style": "chorus"},
+            "4-bridge": {"chords": ["Gb", "Ab", "Gb/Bb", "Ab/C", "Gb", "Ab", "Ebm7", "Ab"], "style": "light"},
+            "5-outro":  {"chords": ["Ebm", "Db", "Ebm", "Gb", "Db"], "style": "ending"},
         },
     },
     {
         "name": "07-kiss-me",
         "tempo": 100,
         "feel": "straight",
-        "transpose": 1,          # D shapes, capo 1, sounds in Eb
+        "key": "Eb",           # sounding key. Guitar: D shapes, capo 1
         "sections": {
-            "1-intro":  {"chords": ["D", "Dmaj7", "D7", "Dmaj7"] * 2, "style": "light"},
-            "2-verse":  {"chords": ["D", "Dmaj7", "D7", "Dmaj7", "D", "Dmaj7", "D7", "G"], "style": "verse"},
-            "3-chorus": {"chords": ["Em", "A", "D", "Bm", "Em", "A", "D", "D7",
-                                    "Em", "A", "D", "D/C#", "Bm", "G", "A", "D"], "style": "chorus"},
-            "4-bridge": {"chords": ["Em", "A", "D", "Bm", "Em", "A", "D", "D7"], "style": "verse"},  # the solo
-            "5-outro":  {"chords": ["Dmaj7", "D7", "Dmaj7", "D"], "style": "ending"},
+            "1-intro":  {"chords": ["Eb", "Ebmaj7", "Eb7", "Ebmaj7"] * 2, "style": "light"},
+            "2-verse":  {"chords": ["Eb", "Ebmaj7", "Eb7", "Ebmaj7", "Eb", "Ebmaj7", "Eb7", "Ab"], "style": "verse"},
+            "3-chorus": {"chords": ["Fm", "Bb", "Eb", "Cm", "Fm", "Bb", "Eb", "Eb7",
+                                    "Fm", "Bb", "Eb", "Eb/D", "Cm", "Ab", "Bb", "Eb"], "style": "chorus"},
+            "4-bridge": {"chords": ["Fm", "Bb", "Eb", "Cm", "Fm", "Bb", "Eb", "Eb7"], "style": "verse"},  # the solo
+            "5-outro":  {"chords": ["Ebmaj7", "Eb7", "Ebmaj7", "Eb"], "style": "ending"},
         },
     },
     {
         "name": "10-paper-stars",
         "tempo": 88,
         "feel": "straight",
-        "transpose": 1,          # C shapes, capo 1, sounds in Db
+        "key": "Db",           # sounding key. Guitar: C shapes, capo 1
         "sections": {
-            "1-intro":     {"chords": ["C", "Am", "F", "G"], "style": "light"},
-            "2-verse":     {"chords": ["C", "Am", "F", "G"] * 2, "style": "verse"},
-            "3-prechorus": {"chords": ["Am", "C", "Am", "C", "F", "C", "F", "G"], "style": "light"},
-            "4-chorus":    {"chords": ["C", "F", "G", "F", "Am", "F", "G", "F",
-                                       "C", "F", "G", "F", "Am", "F", "G", "C"], "style": "chorus"},
-            "5-bridge":    {"chords": ["F", "Am", "F", "C", "F", "Am", "F", "C", "F", "Am", "C", "G"],
+            "1-intro":     {"chords": ["Db", "Bbm", "Gb", "Ab"], "style": "light"},
+            "2-verse":     {"chords": ["Db", "Bbm", "Gb", "Ab"] * 2, "style": "verse"},
+            "3-prechorus": {"chords": ["Bbm", "Db", "Bbm", "Db", "Gb", "Db", "Gb", "Ab"], "style": "light"},
+            "4-chorus":    {"chords": ["Db", "Gb", "Ab", "Gb", "Bbm", "Gb", "Ab", "Gb",
+                                       "Db", "Gb", "Ab", "Gb", "Bbm", "Gb", "Ab", "Db"], "style": "chorus"},
+            "5-bridge":    {"chords": ["Gb", "Bbm", "Gb", "Db", "Gb", "Bbm", "Gb", "Db", "Gb", "Bbm", "Db", "Ab"],
                             "style": "light"},
-            "6-outro":     {"chords": ["F", "G", "C", "C"], "style": "ending"},
+            "6-outro":     {"chords": ["Gb", "Ab", "Db", "Db"], "style": "ending"},
         },
     },
 ]

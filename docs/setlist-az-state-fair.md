@@ -2,7 +2,7 @@
 
 Sunday, October 4, 2026, 1:00 to 2:00 pm. One set, 14 songs. BandHelper totals it at 54:46; the song durations alone add up to 51:31.
 
-Pulled from BandHelper on September 26, 2026. "Chart shapes" is what the guitar chart is written in. Where it differs from the key, a capo is doing the rest. The bass tracks need the sounding key, so the capo column has to be right before a song goes into `make_tracks.py`.
+Pulled from BandHelper on September 26, 2026. "Chart shapes" is what the guitar chart is written in. Where it differs from the key, a capo is doing the rest. `make_tracks.py` takes chords in the sounding key, so a chart in capo shapes gets moved up by the capo before it goes in, and the capo column has to be right first.
 
 | # | Song | Original or cover | Key (BandHelper) | Chart shapes | Capo | Tempo | Time | Length |
 |---|---|---|---|---|---|---|---|---|
@@ -52,12 +52,16 @@ Plays in **A** (G shapes, capo 2), confirmed Sept 26. The chart and BandHelper s
 
 One chord per bar. Bar counts from the lyric timings:
 
-| Section | Bars | Chords (chart shapes) |
+Chords are in the sounding key, A, which is what every instrument but the capo'd guitar reads.
+
+| Section | Bars | Chords (key of A) |
 |---|---|---|
-| Verse | 8 | G C Em D, twice |
-| Pre-chorus | 6 | Em C G D, D held 2 more bars |
-| Chorus | 12 | G C Em D, twice, then C G G G |
-| Bridge | 8 | Am G Am D Am C C D (not in the video, estimate) |
+| Intro | 4 | A D F#m E |
+| Verse | 8 | A D F#m E, twice |
+| Pre-chorus | 6 | F#m D A E, E held 2 more bars |
+| Chorus | 12 | A D F#m E, twice, then D A A A |
+| Bridge | 8 | Bm A Bm E Bm D D E (not in the video, estimate) |
+| Outro | 4 | D D D A (the "halfway gone x3" tag) |
 
 The pre-chorus and chorus tail are estimates within about half a bar.
 

@@ -67,7 +67,7 @@ Foot controller ─────────────────>   ├─ Dr
   - Builds from `ableton/template.als`, an empty set saved by Live 12.4.6. Live's own `DefaultLiveSet.als` is an older 12.x file and comes up "corrupt (non-unique Pointee IDs)".
   - Copying a track means giving fresh IDs to every `*Target`, `Pointee` and `ControllerTargets.N` element, and to the track itself. Missing `ControllerTargets.N` was the cause of the corrupt-file warning.
   - Tempo lives in two places: `<Tempo><Manual>` and the main track's tempo automation event. Both get set.
-- `ableton/clips/`: the four State Fair songs with tracks, numbered by setlist position: `02-halfway-gone` (104, A), `06-choosin-texas` (110, Db), `07-kiss-me` (100, Eb), `10-paper-stars` (88, Db). Chords are in chart shapes; `transpose` is the capo. Bar counts are estimates from the lyric lines, to be fixed at rehearsal.
+- `ableton/clips/`: the four State Fair songs with tracks, numbered by setlist position: `02-halfway-gone` (104, A), `06-choosin-texas` (110, Db), `07-kiss-me` (100, Eb), `10-paper-stars` (88, Db). Chords are written in the sounding key (Dan, Sept 26: every other instrument plays in the natural key, so no capo shapes in the generator). Each song's `key` comment notes the guitar's shapes and capo for reference only. Bar counts are estimates from the lyric lines, to be fixed at rehearsal.
 - `ableton/README.md`: 5-lesson Ableton guide for the user.
 - `ableton/LIGHTING.md`: ONYX, loopMIDI and LB-Hex setup.
 - `ableton/BANDHELPER.md`: Android MIDI options and AbleSet.
