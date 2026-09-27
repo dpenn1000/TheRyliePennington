@@ -71,12 +71,19 @@ EAW tips: pole-mount the tops on the sub, use EAW's matched sub and top presets,
 | IGS Tubecore Mastering Edition (stereo vari-mu, M/S, mix) | Mix bus glue, last in chain |
 
 Starting chains:
-- Vocal: mic → Sebatron (air) → AS78 → 828es
+- Vocal: Pearlman TM-1 → Buzz MA-2.2 or Sebatron (A/B by ear) → AS78 → 828es
 - Acoustic: stereo pair → Buzz MA-2.2 → IGS Zen (linked) → 828es
 - Bass: DI → TK DP2 (Hi-Z) → 828es
 - Mix bus (hardware inserts from DP): SSL Fusion → IGS Tubecore
 
-**Unknown:** which microphones the studio has. That decides which preamp suits Rylie's voice best.
+## Rylie's vocal mics
+
+| Where | Mic | Notes |
+|---|---|---|
+| Studio | **Pearlman TM-1** (tube condenser) | Her favorite so far. Try it into the Buzz MA-2.2 (clean) first, then the Sebatron (tube on tube, warmer). Pick by ear. |
+| Live | **Beyerdynamic M88** (dynamic, hypercardioid) | Warm, natural tone. Hypercardioid: its least sensitive spot is about 110° to 120° off-axis, not straight behind, so angle wedges accordingly or run in-ears. Strong proximity effect: use a high-pass around 80 to 100 Hz and coach a consistent distance. |
+
+Other studio mics: not yet listed.
 
 ## Lights
 
