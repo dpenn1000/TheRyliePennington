@@ -92,7 +92,8 @@ Starting chains:
 | AEA R84 | Large ribbon, figure-8 | Acoustic guitar (body), smooth vocal alternative, room |
 | Royer R-10 (pair) | Ribbon, figure-8 | Stereo acoustic guitar or room (Blumlein), percussion |
 | Lewitt LCT 440 PURE | Large-diaphragm condenser, cardioid | Acoustic guitar (12th fret), dad's vocal, clean utility mic |
-| Beyerdynamic TG V90r (×2) | Ribbon, **cardioid**, handheld stage vocal mic; survives accidental phantom; 50 Hz to 14 kHz | Warm live vocals for either singer; smooth studio vocal alternative |
+| Beyerdynamic TG V90r | Ribbon, **cardioid**, handheld stage vocal mic; survives accidental phantom; 50 Hz to 14 kHz | Warm live vocals for either singer; smooth studio vocal alternative |
+| Beyerdynamic M 201 TG (×2) | Dynamic, hypercardioid. Dad's take: an SM57 but better and far more focused | Cajón, percussion, guitar cabs, loud sources; tight pickup on a busy stage |
 | Telefunken M80 (several) | Dynamic, supercardioid | Dad's live vocal, backups for Rylie live |
 | Beyerdynamic M88 | Dynamic, hypercardioid | Rylie's live vocal |
 
