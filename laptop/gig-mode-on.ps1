@@ -5,11 +5,12 @@
 
 Write-Host "Closing background apps..."
 $apps = 'HD-Player','BlueStacks*','Grammarly*','MuseHub','ms-teams','Teams','Microsoft.Lists',
-        'PhoneExperienceHost','CrossDeviceService','logioptionsplus*','OneDrive','OneDrive.Sync.Service'
+        'PhoneExperienceHost','CrossDeviceService','logioptionsplus*','OneDrive','OneDrive.Sync.Service',
+        'LenovoVantage*'   # includes Smart Performance, whose scheduled scans could start mid-set
 foreach ($a in $apps) { Get-Process $a -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue }
 
 Write-Host "Pausing search indexing, prefetch, telemetry and Windows Update for this session..."
-foreach ($s in 'WSearch','SysMain','DiagTrack','wuauserv','UsoSvc','MuseAuthService') {
+foreach ($s in 'WSearch','SysMain','DiagTrack','wuauserv','UsoSvc','MuseAuthService','LenovoVantageService') {
     Stop-Service $s -Force -ErrorAction SilentlyContinue
 }
 
@@ -35,7 +36,7 @@ powercfg /setactive $guid
 
 Write-Host ""
 Write-Host "Gig mode on. Still do by hand:" -ForegroundColor Green
-Write-Host "  - Lenovo Vantage > Power: set Intelligent Cooling to Extreme Performance"
+Write-Host "  - Set Lenovo Vantage > Power > Intelligent Cooling to Extreme Performance BEFORE running this (the script closes Vantage)"
 Write-Host "  - Do Not Disturb on (Win+N, bell icon)"
 Write-Host "  - Bluetooth off unless something on stage needs it"
 Write-Host "  - Close Chrome and Claude before opening Ableton"
