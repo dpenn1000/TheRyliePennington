@@ -96,6 +96,7 @@ Starting chains:
 | Beyerdynamic M 201 TG (×2) | Dynamic, hypercardioid. Dad's take: an SM57 but better and far more focused | Cajón, percussion, guitar cabs, loud sources; tight pickup on a busy stage |
 | Telefunken M80 (several) | Dynamic, supercardioid | Dad's live vocal, backups for Rylie live |
 | Beyerdynamic M88 | Dynamic, hypercardioid | Rylie's live vocal |
+| Neumann KMS 105 (×2) | Handheld condenser, supercardioid (needs phantom) | Detailed, studio-like live vocals for either singer; A/B against the M88 on the RCF or EAW rigs |
 
 **Ribbons (R84, R-10):** keep phantom power off on their channels as a habit, and give them a preamp with lots of clean gain (Buzz MA-2.2 first). Figure-8 means they pick up equally from the back, so aim the back at something you don't mind hearing.
 
