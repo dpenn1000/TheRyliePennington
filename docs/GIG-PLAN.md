@@ -7,15 +7,15 @@ The fair runs **Oct 1 to Nov 1, 2026** (Thursday to Sunday). Fill in the slot:
 - **Set length:** one set, 14 songs, 54:46
 - **Load-in and soundcheck:** _TBD_
 
-- **Rig:** the quick rig. MOTU M2 into the PA, no in-ears, no click, lights on myDMX.
+- **Rig:** the quick rig. MOTU M2 into the PA, no in-ears, no click, lights on ONYX.
 
 ## If the gig is in the first week (tight)
 
 Aim for something simple and solid, not complete.
 
-1. **Backing tracks for 3 to 5 songs only.** Leave the rest acoustic, like you've always done. Nobody at a fair knows which songs "should" have drums.
+1. **Backing tracks for 4 songs only:** Halfway Gone, Choosin' Texas, Kiss Me, Paper Stars. Leave the rest acoustic, like you've always done. Nobody at a fair knows which songs "should" have drums.
 2. **No AbleSet, no BandHelper link.** One Ableton set, songs stacked top to bottom, scenes launched from the laptop or with computer keys (Ctrl+K key mapping).
-3. **Lights on myDMX, sound-active.** It's the setup you already know. ONYX comes later.
+3. **Lights on ONYX.** One look per section, fired by the Lights track through loopMIDI (see `ableton/LIGHTING.md`). Build a simple static look for the acoustic songs.
 4. **Freeze all tracks** the night before.
 5. **Rehearse the whole set twice** with the rig, start to finish, including the moments between songs.
 
@@ -31,7 +31,7 @@ Aim for something simple and solid, not complete.
 - [ ] Wi-Fi, notifications and Windows Update turned off
 - [ ] Audio interface, cables, and a spare USB cable
 - [ ] Foot controller and its cable
-- [ ] NX DMX dongle **and** the myDMX backup
+- [ ] NX DMX dongle and a spare USB cable for it
 - [ ] DMX cables and terminator
 - [ ] Travel router (if using AbleSet)
 - [ ] Tablets charged, BandHelper synced offline

@@ -7,7 +7,7 @@ Pulled from BandHelper on September 26, 2026. "Chart shapes" is what the guitar 
 | # | Song | Original or cover | Key (BandHelper) | Chart shapes | Capo | Tempo | Time | Length |
 |---|---|---|---|---|---|---|---|---|
 | 1 | Country Roads | Cover, John Denver | A | none on file | ? | 66 | ? | 3:10 |
-| 2 | Halfway Gone, Halfway Brave | Original | Ab (A in the Sept video) | G | 1 or 2, confirm | 104 | 4/4 | 3:15 |
+| 2 | Halfway Gone, Halfway Brave | Original | A (BandHelper and chart still say Ab) | G | 2 | 104 | 4/4 | 3:15 |
 | 3 | Big Yellow Taxi | Cover, Joni Mitchell | D | G | ? | ? | ? | 2:16 |
 | 4 | House of the Rising Sun | Cover, The Animals | Am | Am | ? | ? | ? (6/8 on the record) | 4:20 |
 | 5 | Trains I Missed | Cover, Balsam Range | B | A (capo 2) | 2 | ? | ? | 3:48 |
@@ -48,7 +48,7 @@ The charts live in the band's Lyrics and Chords folder on OneDrive, not in this 
 
 Measured from a September 2026 performance video: about 105 BPM average, verses near 100, choruses pushing toward 110. Track tempo set at **104** so the track sits a hair under her natural pace. Check 100, 104 and 108 at rehearsal.
 
-The video sounds in **A** (G shapes, capo 2). The chart and BandHelper say capo 1, Ab. Confirm with Rylie before building the bass.
+Plays in **A** (G shapes, capo 2), confirmed Sept 26. The chart and BandHelper still say capo 1, Ab; update them.
 
 One chord per bar. Bar counts from the lyric timings:
 
@@ -99,4 +99,3 @@ The chorus changes chord every half bar (A to E on "radio ga ga"), so `make_trac
 - Trains I Missed: capo 2 in B means A shapes. The chart on file is in B shapes (B, F#, G#m, E) and the other version is capo 4, so neither matches yet.
 - Need You Now and These Old Wheels have no key in BandHelper.
 - Chord timing: some charts need adjusting before their tracks get built.
-- Halfway Gone key: A (capo 2) or Ab (capo 1).

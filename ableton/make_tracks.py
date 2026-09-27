@@ -7,6 +7,7 @@ ready to drag into Session View clip slots.
 
 To add a song, copy an entry in SONGS and change tempo, feel and chords.
 Chords are one per bar: "G", "Em", "C/E" (slash = bass note), "D7", etc.
+Write chords in chart shapes and set "transpose" to the capo fret; the bass sounds in the real key.
 Set "bass": False on a song when Rylie plays bass live; only drums and lights are written.
 """
 import os
@@ -26,29 +27,66 @@ NOTE = {"C": 0, "C#": 1, "Db": 1, "D": 2, "D#": 3, "Eb": 3, "E": 4, "F": 5,
         "F#": 6, "Gb": 6, "G": 7, "G#": 8, "Ab": 8, "A": 9, "A#": 10, "Bb": 10, "B": 11}
 
 SONGS = [
+    # Chords are written in chart shapes, exactly as they appear in the Lyrics and Chords
+    # charts. "transpose" is the capo: it moves the bass to the sounding key.
+    # Bar counts are estimates from the lyric lines. Fix them at rehearsal and re-run.
     {
-        "name": "01-front-porch",
-        "tempo": 96,
-        "feel": "straight",      # straight 8ths, folk-pop
+        "name": "02-halfway-gone",
+        "tempo": 104,            # try 100 and 108 at rehearsal
+        "feel": "straight",
+        "transpose": 2,          # G shapes, capo 2, sounds in A
         "sections": {
-            "1-intro":  {"chords": ["G", "D", "Em", "C"] * 2, "style": "light"},
-            "2-verse":  {"chords": ["G", "D", "Em", "C"] * 2, "style": "verse"},
-            "3-chorus": {"chords": ["C", "G", "D", "Em", "C", "G", "D", "D"], "style": "chorus"},
-            "4-bridge": {"chords": ["Em", "C", "G", "D"] * 2, "style": "light"},
-            "5-outro":  {"chords": ["C", "D", "G", "G"], "style": "ending"},
+            "1-intro":     {"chords": ["G", "C", "Em", "D"], "style": "light"},
+            "2-verse":     {"chords": ["G", "C", "Em", "D"] * 2, "style": "verse"},
+            "3-prechorus": {"chords": ["Em", "C", "G", "D", "D", "D"], "style": "verse"},
+            "4-chorus":    {"chords": ["G", "C", "Em", "D"] * 2 + ["C", "G", "G", "G"], "style": "chorus"},
+            "5-bridge":    {"chords": ["Am", "G", "Am", "D", "Am", "C", "C", "D"], "style": "light"},
+            "6-outro":     {"chords": ["C", "C", "C", "G"], "style": "ending"},
         },
     },
     {
-        "name": "02-campfire-shuffle",
-        "tempo": 84,
-        "feel": "shuffle",       # swung 8ths, laid back
-        "bass": True,            # False when Rylie plays bass on this one
+        "name": "06-choosin-texas",
+        "tempo": 110,
+        "feel": "straight",
+        "transpose": 1,          # C shapes, capo 1, sounds in Db
         "sections": {
-            "1-intro":  {"chords": ["D", "D", "G", "D"], "style": "light"},
-            "2-verse":  {"chords": ["D", "D", "G", "D", "A", "G", "D", "A"], "style": "verse"},
-            "3-chorus": {"chords": ["G", "G", "D", "D", "A", "G", "D", "D"], "style": "chorus"},
-            "4-bridge": {"chords": ["Bm", "G", "D", "A"] * 2, "style": "light"},
-            "5-outro":  {"chords": ["G", "A", "D", "D"], "style": "ending"},
+            "1-intro":  {"chords": ["Dm7", "C", "C", "C", "Dm7", "F", "C", "C"], "style": "light"},
+            "2-verse":  {"chords": ["C", "Dm7", "C", "C", "Dm7", "Dm7", "C", "C", "F", "F", "G", "G"],
+                         "style": "verse"},
+            "3-chorus": {"chords": ["F", "F", "C", "C", "Dm7", "Dm7", "G", "G",
+                                    "Fmaj7", "Fmaj7", "Am7", "Am7", "F", "F", "G", "C"], "style": "chorus"},
+            "4-bridge": {"chords": ["F", "G", "F/A", "G/B", "F", "G", "Dm7", "G"], "style": "light"},
+            "5-outro":  {"chords": ["Dm", "C", "Dm", "F", "C"], "style": "ending"},
+        },
+    },
+    {
+        "name": "07-kiss-me",
+        "tempo": 100,
+        "feel": "straight",
+        "transpose": 1,          # D shapes, capo 1, sounds in Eb
+        "sections": {
+            "1-intro":  {"chords": ["D", "Dmaj7", "D7", "Dmaj7"] * 2, "style": "light"},
+            "2-verse":  {"chords": ["D", "Dmaj7", "D7", "Dmaj7", "D", "Dmaj7", "D7", "G"], "style": "verse"},
+            "3-chorus": {"chords": ["Em", "A", "D", "Bm", "Em", "A", "D", "D7",
+                                    "Em", "A", "D", "D/C#", "Bm", "G", "A", "D"], "style": "chorus"},
+            "4-bridge": {"chords": ["Em", "A", "D", "Bm", "Em", "A", "D", "D7"], "style": "verse"},  # the solo
+            "5-outro":  {"chords": ["Dmaj7", "D7", "Dmaj7", "D"], "style": "ending"},
+        },
+    },
+    {
+        "name": "10-paper-stars",
+        "tempo": 88,
+        "feel": "straight",
+        "transpose": 1,          # C shapes, capo 1, sounds in Db
+        "sections": {
+            "1-intro":     {"chords": ["C", "Am", "F", "G"], "style": "light"},
+            "2-verse":     {"chords": ["C", "Am", "F", "G"] * 2, "style": "verse"},
+            "3-prechorus": {"chords": ["Am", "C", "Am", "C", "F", "C", "F", "G"], "style": "light"},
+            "4-chorus":    {"chords": ["C", "F", "G", "F", "Am", "F", "G", "F",
+                                       "C", "F", "G", "F", "Am", "F", "G", "C"], "style": "chorus"},
+            "5-bridge":    {"chords": ["F", "Am", "F", "C", "F", "Am", "F", "C", "F", "Am", "C", "G"],
+                            "style": "light"},
+            "6-outro":     {"chords": ["F", "G", "C", "C"], "style": "ending"},
         },
     },
 ]
@@ -220,14 +258,14 @@ def fill_clip(feel, seed, style="verse"):
 
 
 # ---------------------------------------------------------------- bass
-def parse_chord(sym):
+def parse_chord(sym, transpose=0):
     bass = None
     if "/" in sym:
         sym, bass = sym.split("/")
     root = sym[:2] if len(sym) > 1 and sym[1] in "#b" else sym[:1]
     minor = sym[len(root):].startswith("m") and not sym[len(root):].startswith("maj")
-    r = NOTE[root]
-    return r, minor, NOTE[bass] if bass else r
+    r = (NOTE[root] + transpose) % 12
+    return r, minor, (NOTE[bass] + transpose) % 12 if bass else r
 
 
 def bass_pitch(pc):
@@ -236,17 +274,17 @@ def bass_pitch(pc):
     return p + 12 if p < 28 else p
 
 
-def bass(section, feel, seed):
+def bass(section, feel, seed, transpose=0):
     h = Human(seed + 1000)
     chords = section["chords"]
     style = section["style"]
     ev = []
     for bar, sym in enumerate(chords):
-        r, minor, low = parse_chord(sym)
+        r, minor, low = parse_chord(sym, transpose)
         root = bass_pitch(low)
         fifth = bass_pitch((r + 7) % 12)
         third = bass_pitch((r + (3 if minor else 4)) % 12)
-        nxt = parse_chord(chords[(bar + 1) % len(chords)])[2]
+        nxt = parse_chord(chords[(bar + 1) % len(chords)], transpose)[2]
         target = bass_pitch(nxt)
         # approach note: a half step below or above the next root
         approach = target - 1 if h.chance(0.6) and target > 28 else target + 1
@@ -286,6 +324,7 @@ def bass(section, feel, seed):
 LIGHT_CUES = {
     "intro": 60,    # C3  warm, low intensity
     "verse": 62,    # D3  warm wash
+    "prechorus": 63, # D#3 verse look, a step brighter
     "chorus": 64,   # E3  full, brighter color
     "bridge": 65,   # F3  cool, moody
     "outro": 67,    # G3  build to full, then hold
@@ -310,7 +349,7 @@ def main():
             seed = s * 100 + i
             bars = len(sec["chords"])
             d = drums(sec, song["feel"], seed)
-            b = bass(sec, song["feel"], seed)
+            b = bass(sec, song["feel"], seed, song.get("transpose", 0))
             write_mid(os.path.join(out, f"{sec_name}-drums.mid"), d, f"{sec_name} drums", song["tempo"], bars)
             if song.get("bass", True):
                 write_mid(os.path.join(out, f"{sec_name}-bass.mid"), b, f"{sec_name} bass", song["tempo"], bars)
@@ -320,9 +359,10 @@ def main():
             full_b += [(min(t, bars * BAR - E16) + offset, n, v, min(ln, bars * BAR - t), c)
                        for t, n, v, ln, c in b]
             offset += bars * BAR
-        write_mid(os.path.join(out, "6-fill-drums.mid"), fill_clip(song["feel"], s * 100 + 50),
+        fill_no = len(song["sections"]) + 1
+        write_mid(os.path.join(out, f"{fill_no}-fill-drums.mid"), fill_clip(song["feel"], s * 100 + 50),
                   "fill", song["tempo"], 1)
-        write_mid(os.path.join(out, "6-fill-lights.mid"), [(0, LIGHT_CUES["fill"], 100, E8, 0)],
+        write_mid(os.path.join(out, f"{fill_no}-fill-lights.mid"), [(0, LIGHT_CUES["fill"], 100, E8, 0)],
                   "fill lights", song["tempo"], 1)
         total = offset // BAR
         write_mid(os.path.join(out, "0-full-song-drums.mid"), full_d, "full drums", song["tempo"], total)

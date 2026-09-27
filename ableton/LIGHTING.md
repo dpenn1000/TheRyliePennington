@@ -14,6 +14,7 @@ Everything runs on the one Windows laptop.
 |---|---|---|---|
 | Intro | C3 | 60 | Warm amber, 40% |
 | Verse | D3 | 62 | Warm wash, 60% |
+| Pre-chorus | D#3 | 63 | Verse look, a step brighter |
 | Chorus | E3 | 64 | Full, brighter color, 100% |
 | Bridge | F3 | 65 | Cool blue/UV, 50% |
 | Outro | G3 | 67 | Build to full, hold |

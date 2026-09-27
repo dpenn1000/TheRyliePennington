@@ -9,7 +9,7 @@ Context for Claude sessions working in this repo. Read this first.
 - **Consequence for the rig:** on songs where Rylie plays bass, the backing track should be drums only. Set `"bass": False` on that song in `make_tracks.py`. **As of Sept 26, 2026 nobody plays bass live, so every song gets a bass track.** Guest drummers or bassists sometimes sit in, so the drums and bass tracks each get a live on/off switch (track activator, mapped to a key or pedal). Build both tracks for every song; switching happens on stage, not in the generator.
 - The dad already uses **Digital Performer (DP)** for writing and recording and is new to Ableton.
 - **Goal:** live drum and bass backing tracks that sound natural and follow the band. Sections loop until the band moves on, so a verse can be stretched and a bridge skipped on stage. Lighting follows the same section changes.
-- **Next gig:** Arizona State Fair. The fair runs **Oct 1 to Nov 1, 2026, Thursday to Sunday**. The band plays the fair's first weekend, so `docs/GIG-PLAN.md`'s tight plan applies (3 to 5 songs with tracks, myDMX for lights, ONYX later).
+- **Next gig:** Arizona State Fair. The fair runs **Oct 1 to Nov 1, 2026, Thursday to Sunday**. The band plays the fair's first weekend, so `docs/GIG-PLAN.md`'s tight plan applies (4 songs with tracks, lights on ONYX).
   - Gig date: **Sunday, October 4, 2026, 1:00 to 2:00 pm**
   - Set length: **one set, 14 songs, 54:46 in BandHelper** (51:31 of song time). Full list: `docs/setlist-az-state-fair.md`
 
@@ -18,19 +18,19 @@ Context for Claude sessions working in this repo. Read this first.
 | Decision | Choice | Why |
 |---|---|---|
 | Stage DAW | **Ableton Live 12 Suite** (purchased) | Session View is built for looping sections; AbleSet; Max for Live. DP stays for writing and recording. |
-| Show laptop | **Windows PC** | |
+| Show laptop | **Lenovo Yoga C940-15** (Windows). Editing happens on the **studio-pc** (MOTU 828es + analog rack). | Battery won't charge and it has crashed several times; see `docs/GEAR.md`. Use a UPS on stage. |
 | Lighting software | **Obsidian ONYX** with the **NX DMX USB dongle** | More powerful and expandable than myDMX. |
-| Lighting backup | **ADJ myDMX dongle** | Kept for quick setups and as the on-stage fallback. |
+| Lighting backup | **None.** myDMX is out (decided Sept 26, 2026) | ONYX only, including the State Fair. |
 | Fixtures | **5 × Blizzard LB-Hex (RGBAW+UV) pars** | 11-channel mode (`CHNL` → `CH-2`), addresses 1/12/23/34/45. Verified against the LB-Hex manual Rev. C. |
 | Setlists and lyrics | **BandHelper** on **Android tablets** | |
 | Song selection | **AbleSet** in the tablet browser (first gig) | BandHelper → Ableton MIDI link comes after the first gig. |
 | Drums | Suite's **Session Drums Studio** now; **EZdrummer 3** recommended upgrade | |
-| Bass | **Ample Bass P Lite** (free) now; **Toontrack EZbass** recommended upgrade | Suite's basses are mostly synth. |
+| Bass | **Toontrack EZbass** for live shows and writing (laptop and studio-pc); **Spectrasonics Trilian** for production recording (studio-pc only). Decided Sept 26, 2026. | EZbass is light enough for the show laptop. Parts are MIDI, so they move to Trilian unchanged. |
 | Lighting sync method | **MIDI notes per section**, not timecode | Timecode breaks when sections repeat or get skipped. |
 
 ## Two audio setups (decided Sept 26, 2026)
 
-**The State Fair (Oct 4) uses the quick rig: MOTU M2, no click, lights on myDMX.** One Live set serves both. Switch the audio device in Preferences > Audio; the track routing below is what changes.
+**The State Fair (Oct 4) uses the quick rig: MOTU M2, no click, lights on ONYX.** One Live set serves both. Switch the audio device in Preferences > Audio; the track routing below is what changes.
 
 | | Quick rig | Full rig |
 |---|---|---|
@@ -58,13 +58,14 @@ Foot controller ─────────────────>   ├─ Dr
   - Drums use the General MIDI drum note layout (kick 36, snare 38, hats 42/44/46, toms 43/45/47/50, crash 49, ride 51).
   - Bass stays between E1 (28) and D#2 (39).
   - Every clip is an exact number of bars. Don't let notes run past the clip end, or Ableton adds an empty bar to the loop.
-  - `LIGHT_CUES` maps sections to notes: intro 60, verse 62, chorus 64, bridge 65, outro 67, fill 69, blackout 72.
-- `ableton/clips/`: two **placeholder** songs (`01-front-porch` 96 BPM G straight, `02-campfire-shuffle` 84 BPM D shuffle). Replace them with the real setlist.
+  - `LIGHT_CUES` maps sections to notes: intro 60, verse 62, prechorus 63, chorus 64, bridge 65, outro 67, fill 69, blackout 72.
+- `ableton/clips/`: the four State Fair songs with tracks, numbered by setlist position: `02-halfway-gone` (104, A), `06-choosin-texas` (110, Db), `07-kiss-me` (100, Eb), `10-paper-stars` (88, Db). Chords are in chart shapes; `transpose` is the capo. Bar counts are estimates from the lyric lines, to be fixed at rehearsal.
 - `ableton/README.md`: 5-lesson Ableton guide for the user.
 - `ableton/LIGHTING.md`: ONYX, loopMIDI and LB-Hex setup.
 - `ableton/BANDHELPER.md`: Android MIDI options and AbleSet.
 - `docs/GIG-PLAN.md`: countdown plan for the State Fair.
 - `docs/RESEARCH.md`: research notes and sources.
+- `docs/GEAR.md`: both computers, Toontrack shopping list, guitar rig (DI-2, H90, Meraki), the three PA rigs, the studio rack, and the laptop's open hardware problems.
 
 ## Open tasks for the laptop session (in priority order)
 
@@ -82,8 +83,10 @@ The laptop has a Chrome connection; the cloud session that built this repo did n
 
 ## Open questions for the user
 
-- Which foot controller they own, if any.
-- Whether they've bought EZdrummer 3, EZbass or AbleSet.
+- Foot controller: a **Morningstar** is planned (for the H90); none mapped in Ableton yet.
+- Toontrack purchase status (list in `docs/GEAR.md`), and AbleSet.
+- Which microphones the studio has.
+- Whether the DI-2 has a 1/4" output next to the XLR (decides the H90 wiring).
 
 ## Related
 

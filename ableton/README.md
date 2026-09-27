@@ -6,22 +6,25 @@ Drum and bass backing for a live duo, built so the band steers the song instead 
 
 ```
 clips/
-  01-front-porch/        96 BPM, straight 8ths, key of G (folk-pop)
-  02-campfire-shuffle/   84 BPM, swung 8ths, key of D (shuffle)
+  02-halfway-gone/       104 BPM, key of A   (G shapes, capo 2)
+  06-choosin-texas/      110 BPM, key of Db  (C shapes, capo 1)
+  07-kiss-me/            100 BPM, key of Eb  (D shapes, capo 1)
+  10-paper-stars/         88 BPM, key of Db  (C shapes, capo 1)
     0-full-song-*.mid    whole song start to finish (for Arrangement View)
     1-intro-*.mid        light: sidestick, pedal hat, whole-note bass
     2-verse-*.mid        hats, backbeat, ghost notes, root-fifth bass
-    3-chorus-*.mid       crash on the one, driving 8th-note bass
-    4-bridge-*.mid       drops back to light
-    5-outro-*.mid        big ending, last hit rings
-    6-fill-drums.mid     one bar with a fill, for launching by hand
+    3-prechorus-*.mid    (Halfway Gone and Paper Stars only)
+    *-chorus-*.mid       crash on the one, driving 8th-note bass
+    *-bridge-*.mid       drops back to light (the solo, in Kiss Me)
+    *-outro-*.mid        big ending, last hit rings
+    *-fill-drums.mid     one bar with a fill, for launching by hand
     *-lights.mid         one MIDI note per section, fires the ONYX look
 LIGHTING.md              Ableton → ONYX → Blizzard LB-Hex setup
 BANDHELPER.md            BandHelper (Android) + AbleSet setup
 make_tracks.py           the generator; edit chords/tempo and re-run
 ```
 
-These are placeholders in the style of an acoustic duo. Send me your real set list (song, tempo, key, chords per section) and I'll regenerate the clips to match.
+These are the four State Fair songs with tracks, numbered by their place in the set. The chords follow the charts in the Lyrics and Chords folder. Bar counts are best guesses from the lyric lines: if a section runs long or short at rehearsal, fix its chord list in `make_tracks.py` and re-run.
 
 ### Why they sound played, not programmed
 
@@ -60,10 +63,10 @@ Five sessions, about an hour each. Do them in order.
 
 ### Lesson 3: Load a song
 
-1. Set the tempo box to **96** (for Front Porch). Live doesn't read tempo from dragged MIDI files.
+1. Set the tempo box to the song's tempo (**88** for Paper Stars). Live doesn't read tempo from dragged MIDI files.
 2. From your computer's file browser, drag `1-intro-drums.mid` into the **first slot** of the Drums track, `2-verse-drums.mid` into the second slot, and so on down to the outro. Do the same for the bass files in the Bass track.
-3. Drag `6-fill-drums.mid` into slot 6 of the Drums track.
-4. Name the scenes: right-click the scene button on the right > Rename. `Intro`, `Verse`, `Chorus`, `Bridge`, `Outro`, `Fill`.
+3. Drag the fill clip (the highest-numbered file) into the last slot of the Drums track.
+4. Name the scenes: right-click the scene button on the right > Rename. `Intro`, `Verse`, `Pre-chorus`, `Chorus`, `Bridge`, `Outro`, `Fill`.
 5. Launch the Intro scene. It loops. Launch Verse whenever you're ready: it switches on the next bar. Do this until it feels boring.
 
 **Homework:** Play the whole song with your guitar and her voice, you launching scenes by hand. Stretch the verse once, skip the bridge once.
