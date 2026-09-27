@@ -141,11 +141,19 @@ def clip_slots(clips):
     return "<ClipSlotList>" + "".join(out) + "</ClipSlotList>"
 
 
-def scene(i, name, tempo):
-    return f"""<Scene Id="{i}"><FollowAction><FollowTime Value="4" /><IsLinked Value="true" />
-<LoopIterations Value="1" /><FollowActionA Value="4" /><FollowActionB Value="0" />
+# Follow action codes, in Live's menu order: No Action 0, Stop 1, Play Again 2, Previous 3, Next 4.
+# Next = 4 matches Live's own demo sets, which chain scenes with it.
+NEXT, STOP = 4, 1
+
+
+def scene(i, name, tempo, follow=None):
+    """follow = (beats, action): after that many beats, launch the next scene (NEXT) or stop (STOP)."""
+    beats, action = follow or (4, NEXT)
+    on = "true" if follow else "false"
+    return f"""<Scene Id="{i}"><FollowAction><FollowTime Value="{beats:g}" /><IsLinked Value="false" />
+<LoopIterations Value="1" /><FollowActionA Value="{action}" /><FollowActionB Value="0" />
 <FollowChanceA Value="100" /><FollowChanceB Value="0" /><JumpIndexA Value="0" /><JumpIndexB Value="0" />
-<FollowActionEnabled Value="false" /></FollowAction><Name Value="{escape(name)}" /><Annotation Value="" />
+<FollowActionEnabled Value="{on}" /></FollowAction><Name Value="{escape(name)}" /><Annotation Value="" />
 <Color Value="-1" /><Tempo Value="{tempo}" /><IsTempoEnabled Value="false" />
 <TimeSignatureId Value="201" /><IsTimeSignatureEnabled Value="false" /><LomId Value="0" />
 <ClipSlotsListWrapper LomId="0" /></Scene>"""
@@ -218,13 +226,29 @@ def build(song_name, out_path, template=None, update=False):
     clip_dir = os.path.join(HERE, "clips", song_name)
     x = gzip.open(out_path if update else (template or TEMPLATE), "rb").read().decode("utf-8")
 
-    # Sections in song order, the full-song take last.
-    stems = sorted({f.rsplit("-", 1)[0] for f in os.listdir(clip_dir) if f.endswith(".mid")})
-    stems = [s for s in stems if not s.startswith("0-")] + [s for s in stems if s.startswith("0-")]
-    names = []
-    for s in stems:
-        key = s.split("-", 1)[1]
-        names.append(SECTION_NAMES.get(key, key.replace("-", " ").title()))
+    # One scene per section. With a "form", the scenes run in song order (Verse 1, Verse 2...) and
+    # each one launches the next when it ends, so launching the first scene plays the song. Sections
+    # outside the form (the fill) and the full-song take follow, with no follow action.
+    all_stems = sorted({f.rsplit("-", 1)[0] for f in os.listdir(clip_dir) if f.endswith(".mid")})
+    label = {st: SECTION_NAMES.get(st.split("-", 1)[1], st.split("-", 1)[1].replace("-", " ").title())
+             for st in all_stems}
+    form = song.get("form")
+    stems, names, follows = [], [], []
+    if form:
+        seen = {}
+        for n, st in enumerate(form):
+            seen[st] = seen.get(st, 0) + 1
+            repeats = form.count(st) > 1
+            names.append(f"{label[st]} {seen[st]}" if repeats else label[st])
+            stems.append(st)
+            _, length = read_mid(os.path.join(clip_dir, f"{st}-drums.mid"))
+            follows.append((length, NEXT if n < len(form) - 1 else STOP))
+    for st in all_stems:
+        if st not in stems and not st.startswith("0-"):
+            stems.append(st), names.append(label[st]), follows.append(None)
+    for st in all_stems:
+        if st.startswith("0-"):
+            stems.append(st), names.append(label[st]), follows.append(None)
 
     if update:
         x = refresh_tracks(x, clip_dir, stems, names, out_path)
@@ -236,7 +260,8 @@ def build(song_name, out_path, template=None, update=False):
                lambda m: m.group(0) if "<MidiClip" in m.group(0) else clip_slots([None] * len(stems)),
                x, flags=re.S)
     x = re.sub(r"<Scenes>.*?</Scenes>",
-               "<Scenes>" + "".join(scene(i, nm, song["tempo"]) for i, nm in enumerate(names)) + "</Scenes>",
+               "<Scenes>" + "".join(scene(i, nm, song["tempo"], fo)
+                                 for i, (nm, fo) in enumerate(zip(names, follows))) + "</Scenes>",
                x, count=1, flags=re.S)
     x = re.sub(r'(<Tempo>\s*<LomId Value="0" />\s*<Manual Value=")[\d.]+', rf'\g<1>{song["tempo"]}', x, count=1)
     # The main track also holds a tempo automation envelope whose one event overrides Manual.

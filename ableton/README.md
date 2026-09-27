@@ -122,6 +122,6 @@ Then build the Live Set for a song:
 python make_set.py 02-halfway-gone "E:/Daddy Long Legs/Songs/Halfway Gone, Halfway Brave/Halfway Gone.als"
 ```
 
-Open it, drop EZdrummer 3 on Drums and EZbass on Bass, and Save As in the same folder. Live asks for a Project folder and makes `Halfway Gone Project`.
+Open it, drop EZdrummer 3 on Drums and EZbass on Bass, and Save As in the same folder. Songs with a `form` get one scene per section in song order, each set to launch the next when it ends: click the first scene's triangle and the song plays through, click any other scene to jump there. After the instruments are in, refresh clips with `--update` on the saved set (save in Live first). Live asks for a Project folder and makes `Halfway Gone Project`.
 
 Each song needs a name, tempo, feel (`straight` or `shuffle`) and one chord per bar for each section. Style can be `light`, `verse`, `chorus` or `ending`. Or skip all that and send me the chord charts.
