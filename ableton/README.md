@@ -22,6 +22,8 @@ clips/
 LIGHTING.md              Ableton → ONYX → Blizzard LB-Hex setup
 BANDHELPER.md            BandHelper (Android) + AbleSet setup
 make_tracks.py           the generator; edit chords/tempo and re-run
+make_set.py              turns one song's clips into a Live Set (.als)
+template.als             empty Live 12.4.6 set that make_set.py builds from
 ```
 
 These are the four State Fair songs with tracks, numbered by their place in the set. The chords follow the charts in the Lyrics and Chords folder. Bar counts are best guesses from the lyric lines: if a section runs long or short at rehearsal, fix its chord list in `make_tracks.py` and re-run.
@@ -55,8 +57,8 @@ Five sessions, about an hour each. Do them in order.
 
 1. Create three MIDI tracks: **Ctrl+Shift+T**. Name them `Drums`, `Bass` and `Lights` (double-click the name). Lights setup is in `LIGHTING.md`.
 2. **Install the Suite packs** (Packs in the left sidebar): Core Library, Session Drums Club, Session Drums Studio, Drum Booth.
-3. **Drum sound.** Drag a **Session Drums Studio** kit onto the Drums track. For quiet acoustic songs, try a **Drum Booth** kit instead. If you add **EZdrummer 3** later, it uses the same note map as these files.
-4. **Bass sound.** Suite's basses lean synthetic. Start with free **Ample Bass P Lite**. The planned upgrade is **Toontrack EZbass**, which can write a bass line that matches a drum groove.
+3. **Drum sound.** Drag **EZdrummer 3** (browser: Plug-Ins) onto the Drums track. It uses the same note map as these files. If Plug-Ins is empty, turn on Settings > Plug-Ins > Use VST3 Plug-In System Folders.
+4. **Bass sound.** Drag **EZbass** onto the Bass track.
 5. **Audio settings:** Options > Preferences > Audio. Driver type **ASIO** (Windows). Pick your audio interface. Set the buffer size to **128 samples**. Lower means less delay between pressing a button and hearing it; if you hear crackles, go up to 256.
 
 **Homework:** Play the drum track with the computer keyboard (press **M** to turn on the computer MIDI keyboard). Find the kick, snare and hi-hat.
@@ -113,5 +115,13 @@ If you have Python installed, edit `SONGS` at the top of `make_tracks.py` and ru
 ```
 python3 make_tracks.py
 ```
+
+Then build the Live Set for a song:
+
+```
+python make_set.py 02-halfway-gone "E:/Daddy Long Legs/Songs/Halfway Gone, Halfway Brave/Halfway Gone.als"
+```
+
+Open it, drop EZdrummer 3 on Drums and EZbass on Bass, and Save As in the same folder. Live asks for a Project folder and makes `Halfway Gone Project`.
 
 Each song needs a name, tempo, feel (`straight` or `shuffle`) and one chord per bar for each section. Style can be `light`, `verse`, `chorus` or `ending`. Or skip all that and send me the chord charts.

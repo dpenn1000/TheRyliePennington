@@ -9,10 +9,25 @@ Everything the band owns or plans to buy, and how it's wired. Decided Sept 26, 2
 | Machine | Lenovo Yoga C940-15 (type 81TE), i7-9750H, 16 GB, GTX 1650 Max-Q, 512 GB Intel H10 SSD | Studio desktop |
 | Job | Plays the show: Ableton, ONYX, loopMIDI | Writing, recording, editing |
 | Interface | MOTU M2 (quick rig) | MOTU 828es, 48 kHz, internal clock |
-| Drums | EZdrummer 3 | Superior Drummer 3 Orchestral Edition (later) |
-| Bass | EZbass | Trilian (later), and Rylie playing for real |
+| Live | Ableton Live 12 Suite | Ableton Live 12 Suite 12.4.6, ASIO on MOTU Pro Audio, VST3 system folders on |
+| Drums | EZdrummer 3 (to install) | EZdrummer 3 + Acoustic Songwriter EZX + Latin Cuban Percussion EZX (installed); Superior Drummer 3 Orchestral Edition (later) |
+| Bass | EZbass (to install) | EZbass + Upright EBX + Session Player EBX (installed); Trilian (later), and Rylie playing for real |
 
-**Shared files:** Live Sets and ONYX shows sync through OneDrive (`Music\Daddy Long Legs\`). Never open the same set on both machines at once. Use File > Collect All and Save. Sample libraries install on each machine separately, never in OneDrive. On the laptop, mark the show folder "Always keep on this device" and pause OneDrive during shows. Keep a gig copy on an external SSD (exFAT).
+**Shared files:** the project lives on the **Samsung T7 SSD** (exFAT, `E:` on the studio-pc) in `Daddy Long Legs\`, and moves between machines on the drive. The drive letter may differ on the laptop; Live finds files relative to each project folder. Use File > Collect All and Save before unplugging. Sample libraries install on each machine separately, never on the T7 or in OneDrive. Charts, marketing, photos and video stay in OneDrive (`Music\Daddy Long Legs\`).
+
+```
+Daddy Long Legs\
+  Songs\<song>\                     one folder per song, named by title (no setlist number)
+    <name> Project\                 the song's Live Set (Live creates this on first save)
+    MIDI\                           clips from make_tracks.py
+    Audio\Reference, Recordings, Bounces
+  Shows\2026-10-04 AZ State Fair\   the show set that strings the songs together
+  Lighting\ONYX Shows, Fixtures
+  Audio\Samples, Loops              shared across songs
+  Recordings\Studio, Live           full sessions and gig recordings
+  Exports\Backing Tracks, Mixes
+  Templates\  Backups\
+```
 
 **This repo** is cloned on each machine (laptop: `C:\Shows\DaddyLongLegs`), not in OneDrive.
 
@@ -22,12 +37,20 @@ Everything the band owns or plans to buy, and how it's wired. Decided Sept 26, 2
 - **Freezes and crashes.** Bugcheck 0x154 (Aug 3, 4, 8, Sept 26), 0x1E (Sept 17), hard freezes Sept 20 and 26. Fixes in progress: MOTU M2 driver 4.6.0.705 (installed Sept 26), NVIDIA Studio driver (was 457.49 from 2020), Lenovo System Update, memory test (`mdsched`). If it keeps happening, suspect hardware.
 - `laptop/gig-mode-on.ps1` / `laptop/gig-mode-off.ps1` (run in an admin PowerShell) close background apps and switch to a no-throttle power plan for shows.
 
-## Toontrack shopping list
+## Toontrack
 
-1. **EZdrummer 3** bundle + **Acoustic Songwriter EZX** (7 Nashville-recorded kits for songwriter, country, folk, pop)
-2. **EZbass Bundle** ($269) with **Upright EBX** and **Session Player EBX** ('63 P-bass, flatwounds, recorded through a flip-top amp). Core EZbass adds a vintage Jazz and a modern Alembic.
-3. **Latin Cuban Percussion EZX** (congas, bongos, timbales, cajón, shakers; MIDI by Richie Flores). Confirm EZdrummer 3 compatibility with Toontrack first.
-4. Later: The Eighties EBX (Wal + Minimoog), Session Legend EBX (BB3000), Americana EBX (Tele bass), Singer-Songwriter EZX.
+Bought and installed on the studio-pc Sept 26, 2026 (installer log: every package succeeded). The laptop still needs them. Drum libraries take 34 GB, bass 4.5 GB.
+
+| Product | Studio-pc | Laptop |
+|---|---|---|
+| **EZdrummer 3** 3.1.2 + Core Library (Main, Bright and Tight rooms) | Installed | To install |
+| **Acoustic Songwriter EZX** (7 Nashville-recorded kits for songwriter, country, folk, pop) | Installed | To install |
+| **Latin Cuban Percussion EZX** (congas, bongos, timbales, cajón, shakers; MIDI by Richie Flores) | Installed | To install |
+| **EZbass** 1.1.2 + Core Library (vintage Jazz, modern Alembic) | Installed | To install |
+| **Upright EBX** | Installed | To install |
+| **Session Player EBX** ('63 P-bass, flatwounds, recorded through a flip-top amp) | Installed | To install |
+
+Later: The Eighties EBX (Wal + Minimoog), Session Legend EBX (BB3000), Americana EBX (Tele bass), Singer-Songwriter EZX.
 
 EZbass for live and writing; Trilian for production. Parts are MIDI, so they move between the two unchanged. For Rylie's originals, she plays the real bass part in the studio.
 
