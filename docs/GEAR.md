@@ -72,7 +72,7 @@ EAW tips: pole-mount the tops on the sub, use EAW's matched sub and top presets,
 
 Starting chains:
 - Vocal: Pearlman TM-1 → Buzz MA-2.2 or Sebatron (A/B by ear) → AS78 → 828es
-- Acoustic: stereo pair → Buzz MA-2.2 → IGS Zen (linked) → 828es
+- Acoustic: AEA R84 at the body + Lewitt LCT 440 PURE at the 12th fret → Buzz MA-2.2 → IGS Zen (linked) → 828es. Stereo option: Royer R-10 pair as Blumlein.
 - Bass: DI → TK DP2 (Hi-Z) → 828es
 - Mix bus (hardware inserts from DP): SSL Fusion → IGS Tubecore
 
@@ -83,7 +83,20 @@ Starting chains:
 | Studio | **Pearlman TM-1** (tube condenser) | Her favorite so far. Try it into the Buzz MA-2.2 (clean) first, then the Sebatron (tube on tube, warmer). Pick by ear. |
 | Live | **Beyerdynamic M88** (dynamic, hypercardioid) | Warm, natural tone. Hypercardioid: its least sensitive spot is about 110° to 120° off-axis, not straight behind, so angle wedges accordingly or run in-ears. Strong proximity effect: use a high-pass around 80 to 100 Hz and coach a consistent distance. |
 
-Other studio mics: not yet listed.
+### Mic locker
+
+| Mic | Type | Best use here |
+|---|---|---|
+| Pearlman TM-1 | Tube condenser | Rylie's lead vocal |
+| Lauten Audio Atlantis | Large-diaphragm FET condenser | Alternate lead vocal; acoustic guitar |
+| AEA R84 | Large ribbon, figure-8 | Acoustic guitar (body), smooth vocal alternative, room |
+| Royer R-10 (pair) | Ribbon, figure-8 | Stereo acoustic guitar or room (Blumlein), percussion |
+| Lewitt LCT 440 PURE | Large-diaphragm condenser, cardioid | Acoustic guitar (12th fret), dad's vocal, clean utility mic |
+| Beyerdynamic M 201 TG (×2) | Dynamic, hypercardioid | Cajón, percussion, loud sources, live utility |
+| Telefunken M80 (several) | Dynamic, supercardioid | Dad's live vocal, backups for Rylie live |
+| Beyerdynamic M88 | Dynamic, hypercardioid | Rylie's live vocal |
+
+**Ribbons (R84, R-10):** keep phantom power off on their channels as a habit, and give them a preamp with lots of clean gain (Buzz MA-2.2 first). Figure-8 means they pick up equally from the back, so aim the back at something you don't mind hearing.
 
 ## Lights
 

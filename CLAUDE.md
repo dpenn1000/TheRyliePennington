@@ -85,7 +85,6 @@ The laptop has a Chrome connection; the cloud session that built this repo did n
 
 - Foot controller: a **Morningstar** is planned (for the H90); none mapped in Ableton yet.
 - Toontrack purchase status (list in `docs/GEAR.md`), and AbleSet.
-- Other studio mics beyond the Pearlman TM-1 (Rylie's studio vocal mic; live she uses a Beyerdynamic M88).
 - Whether the DI-2 has a 1/4" output next to the XLR (decides the H90 wiring).
 
 ## Related
