@@ -87,8 +87,8 @@ Starting chains:
 
 | Mic | Type | Best use here |
 |---|---|---|
-| Pearlman TM-1 | Tube condenser | Rylie's lead vocal |
-| Lauten Audio Atlantis | Large-diaphragm FET condenser | Alternate lead vocal; acoustic guitar |
+| Pearlman TM-1 | Tube condenser | **Rylie's lead vocal.** Sits her right in the mix every time. The default, not up for debate |
+| Lauten Audio Atlantis | Large-diaphragm FET condenser, multi-pattern, G/N/F voicing modes | **Dad's vocal** (loves it on his voice). Not for Rylie: its sibilance lands wrong on her voice. Also acoustic guitar |
 | AEA R84 | Large ribbon, figure-8 | Acoustic guitar (body), smooth vocal alternative, room |
 | Royer R-10 (pair) | Ribbon, figure-8 | Stereo acoustic guitar or room (Blumlein), percussion |
 | Lewitt LCT 440 PURE | Large-diaphragm condenser, cardioid | Acoustic guitar (12th fret), dad's vocal, clean utility mic |
