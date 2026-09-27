@@ -45,7 +45,8 @@ SONGS = [
             "2-verse":     {"chords": ["A", "D", "F#m", "E"] * 2, "style": "verse"},
             "3-prechorus": {"chords": ["F#m", "D", "A", "E", "E", "E"], "style": "verse", "snare": True},
             "4-chorus":    {"chords": ["A", "D", "F#m", "E"] * 2 + ["D", "A", "A", "A"], "style": "chorus"},
-            "5-bridge":    {"chords": ["Bm", "A", "Bm", "E", "Bm", "D", "D", "E"], "style": "light"},
+            "5-bridge":    {"chords": ["Bm", "A", "Bm", "E", "Bm", "D", "D", "E"], "style": "bridge",
+                            "lead_in": "A"},  # walk up into the chorus that follows
             "6-outro":     {"chords": ["D", "D", "D", "A"], "style": "ending"},
         },
     },
@@ -163,6 +164,9 @@ def swing(pos_in_beat, feel):
 
 # ---------------------------------------------------------------- drums
 def drum_bar(h, bar, style, feel, fill=False, first=False, last_bar=False, stick=False):
+    # "bridge" is a bass-line style (see bridge_bar); drums play it exactly like "light".
+    if style == "bridge":
+        style = "light"
     ev = []
     b0 = bar * BAR
 
@@ -306,6 +310,43 @@ def walk(root, target):
     return [target + 5, target + 3, target + 1]
 
 
+def bridge_bar(h, bar, chords, transpose, lead_in=None):
+    """One bar of a bridge: root through the bar so the chord is never in doubt, one passing
+    note into a change, and, on the section's last bar (if lead_in names the chord after it), a
+    three-note chromatic walk up into it. No fifths: a fifth can land on the ROOT of a different
+    chord elsewhere in the progression, which is what made the D sound skipped."""
+    b0 = bar * BAR
+    root = bass_pitch(parse_chord(chords[bar], transpose)[2])
+    last = bar == len(chords) - 1
+    if last and lead_in:
+        target = bass_pitch(parse_chord(lead_in, transpose)[2])
+    elif not last:
+        target = bass_pitch(parse_chord(chords[bar + 1], transpose)[2])
+    else:
+        target = root
+    changes = target != root
+
+    ev = []
+
+    def note(tick, p, vel, length):
+        ev.append((h.t(b0 + tick, -2, 5), p, h.v(vel, 5), length, 0))
+
+    if last and lead_in:
+        note(0, root, 95, PPQ - 20)
+        walk = [target - 3, target - 2, target - 1]
+        if walk[0] < BASS_LOW:
+            walk = [w + 12 for w in walk]
+        for i, p in enumerate(walk):
+            note((i + 1) * PPQ, p, 80 + i * 5, PPQ - 30)
+    elif changes:
+        note(0, root, 90, 3 * PPQ - 20)
+        approach = target - 1 if target - 1 >= BASS_LOW else target + 1
+        note(3 * PPQ, approach, 78, PPQ - 20)
+    else:
+        note(0, root, 88, BAR - E8)
+    return ev
+
+
 def bass(section, feel, seed, transpose=0, variant="band"):
     if variant != "band":
         return bass_variant(section, feel, seed, transpose, variant)
@@ -328,6 +369,9 @@ def bass(section, feel, seed, transpose=0, variant="band"):
         def note(tick, p, vel, length):
             ev.append((h.t(b0 + tick, -2, 5), p, h.v(vel, 5), length, 0))
 
+        if style == "bridge":
+            ev += bridge_bar(h, bar, chords, transpose, section.get("lead_in"))
+            continue
         if style == "ending" and last:
             note(0, root, 105, BAR - E8)
             continue
@@ -367,6 +411,11 @@ def bass_variant(section, feel, seed, transpose, variant):
         last = bar == len(chords) - 1
         changes = not last and nxt_sym != sym
         b0 = bar * BAR
+
+        if style == "bridge":
+            ev += bridge_bar(h, bar, chords, transpose, section.get("lead_in"))
+            continue
+
         sw = swing(E8, feel)
 
         def note(tick, p, vel, length):
