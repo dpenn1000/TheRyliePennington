@@ -128,4 +128,56 @@ Starting chains:
 
 ## Lights
 
-ONYX only, with the Obsidian NX DMX dongle and 5 Blizzard LB-Hex pars. myDMX is out. loopMIDI port `Lights` installed on the laptop Sept 26. See `ableton/LIGHTING.md`.
+ONYX only, with the Obsidian NX DMX dongle and 5 Blizzard LB Hex Unplugged (battery) pars. myDMX is out. loopMIDI port `Lights` installed on the laptop Sept 26. See `ableton/LIGHTING.md`.
+
+## Valuation
+
+Line-item cost and resale basis for the gear above, for insurance and tax records. Full detail (MSRP, street price, source URLs, per-item notes) lives in `studio_gear_valuation.xlsx` in this folder; this table is the purchased-cost and used-resale-estimate summary, sorted by purchase price.
+
+| Item | Qty | Owned | Purchased ($) | Used Est. ($) |
+|---|---|---|---|---|
+| Schoeps Stereo Set MK 22 (CMC622ST Open Cardioid) | 1 | 1 year | 2,802.83 | 2,200.00 |
+| IGS Audio Tubecore 3U Vari-mu Compressor (assumed rack version) | 1 | 2 years | 2,777.54 | 1,900.00 |
+| RDY North 003 Computer (model/specs unspecified) | 1 | 1 year | 2,034.41 | 750.00 |
+| Guild F-50 Jumbo Acoustic Guitar | 1 | 2 years | 1,845.18 | 1,300.00 |
+| IGS Audio ZEN Stereo Mastering Compressor | 1 | <1 year | 1,700.00 | 1,350.00 |
+| RCF ART 710-A MK5 10" Powered Speaker | 4 | 2 years | 1,659.08 | 1,200.00 |
+| ASUS ProArt Monitor(s) (model unspecified) | 1 | <1 year | 1,614.34 | 1,200.00 |
+| Sennheiser ew IEM G4-TWIN (wireless in-ear monitoring system) | 1 | <1 year | 1,564.36 | 1,200.00 |
+| GIK Acoustics Treatment (panels/bass traps; details unspecified) | 1 | 2 years | 1,417.00 | 500.00 |
+| Handcrafted Labs Thermos Equalizer (Mastering EQ) | 1 | 1 year | 1,329.38 | 900.00 |
+| AudioScape AS78 Dual FET Peak Limiter (1178-style) | 1 | <1 year | 1,289.00 | 1,100.00 |
+| Sebatron VMP-4000 (4-channel tube preamp) (model variant unspecified) | 1 | 2 years | 1,223.03 | 700.00 |
+| Pearlman TM-1 Tube Condenser Microphone (German tube) | 1 | <1 year | 1,201.76 | 900.00 |
+| Grace Design ROXi Mic/Instrument Preamp Pedal | 1 | 2 years | 951.83 | 550.00 |
+| Radial Microphone Splitter (assumed JS3) | 2 | 2 years | 940.00 | 700.00 |
+| Lauten Audio Atlantis FC-387 Microphone | 1 | 2 years | 933.19 | 500.00 |
+| TK Audio DP2 Dual Class-A Preamp | 1 | 1 year | 893.34 | 550.00 |
+| Elite Acoustics D6-58 Acoustic Amp | 1 | 1 year | 824.21 | 550.00 |
+| Waves 'ERC1' Advanced WiFi Router (model unspecified) | 1 | 2 years | 637.00 | 250.00 |
+| Roc-N-Soc Thrones/Chairs (model/config unspecified), assumed 2 units | 2 | <1 year | 595.56 | 400.00 |
+| Eventide H9 Max Multi-effects Pedal | 1 | 2 years | 558.24 | 350.00 |
+| Sennheiser ew 100 G4-CI1 Wireless Instrument Set (band unspecified) | 1 | 1 year | 549.99 | 300.00 |
+| Beyerdynamic M 201 Hypercardioid Dynamic Instrument Mic | 2 | 3 years | 457.30 | 250.00 |
+| Strymon BigSky Multidimensional Reverb Pedal | 1 | 1 year | 372.23 | 250.00 |
+| Beyerdynamic TG V90r Ribbon Microphone | 1 | 2 years | 372.23 | 200.00 |
+| Saaria Velvet Curtain (acoustic treatment) (details unspecified) | 1 | 1 year | 344.00 | 180.00 |
+| Beyerdynamic Microphone (model unspecified) | 1 | 2 years | 339.26 | 150.00 |
+| Telefunken M80 Dynamic Microphone (Black) | 2 | 2 years | 300.00 | 220.00 |
+| White Oak Audio Rack (custom / furniture) | 1 | <1 year | 280.00 | 170.00 |
+| Bass Guitar (model unspecified) | 1 | <1 year | 236.09 | 120.00 |
+| DI Boxes (Radial/Telefunken), model unspecified | 3 | 2 years | 148.00 | 70.00 |
+| Gator Frameworks GFW-MICSTDBAG (carry bag for up to 6 tripod mic stands) | 1 | 3 years | 124.99 | 70.00 |
+| Telefunken 'TDA-1DL' (model unclear), assumed small accessory/DI | 2 | 3 years | 119.94 | 40.00 |
+| Aureday 64" Phone&Tablet Tripod w/ remote (iPhone/iPad holder), consolidated | 2 | <1 year | 65.98 | 20.00 |
+| Kate Collapsible Pop-Up Backdrop (self-tape / headshots / streaming) | 1 | <1 year | 45.99 | 20.00 |
+
+| Totals | |
+|---|---|
+| Total purchased (cost basis) | $32,547.28 |
+| Total MSRP/list | $37,204.52 |
+| Total new street | $35,494.72 |
+| Total estimated used resale | $21,110.00 |
+| Recovery vs. purchased | 65% |
+| Recovery vs. new street | 59% |
+| Items still missing MSRP/street or model confirmation | 10, flagged in the xlsx's `Missing MSRP/Street?` column |
